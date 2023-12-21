@@ -1,6 +1,6 @@
 ---
 layout: page
-tags: [Template]
+tags: [Template] [Keymanager]
 page_title: Template page
 ---
 
