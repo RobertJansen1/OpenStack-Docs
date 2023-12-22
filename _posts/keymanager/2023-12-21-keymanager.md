@@ -1,11 +1,10 @@
 ---
 layout: page
 tags: [Template]
-page_title: Template page
+page_title: How to store secrets in keymanager
 ---
 
-This tutorial guides you through the process of creating a template page. 
-This section is used to give a brief explanation of what is achieved with the tutorial.
+This page will help you create secrets and store them in the keymanager.
 ---
 
 
