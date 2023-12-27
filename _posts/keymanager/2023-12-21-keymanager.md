@@ -1,6 +1,6 @@
 ---
 layout: page
-tags: [Secret Keymanager]
+tags: [Keymanager]
 page_title: How to store secrets in keymanager
 ---
 
