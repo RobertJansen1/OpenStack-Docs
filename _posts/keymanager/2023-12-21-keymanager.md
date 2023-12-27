@@ -4,12 +4,16 @@ tags: [Keymanager]
 page_title: How to store secrets in keymanager
 ---
 
-# Identifying disks in the instance
+# Here you will find the following:
+-	How to Login to OpenStack Horizon.
+- How to download the source file (OpenStack RC File) in the OpenStack environment.
+-	How to authenticate with your OpenStack via the CLI.
+-	How to view secrets.
+-	How to create a secret.
+-	How to update a secret with payload.
+-	How to create a secret with payload.
+-	How to delete a secret.
 
-As we all know, volume attachments to a nova instance are sometimes hard to recognise, especially if the volumes are mounted as `/dev/sdb`. Though if there are more volumes attached, the order of disks is sometimes randomized, without a real indication of how it presents itself.
-
-From the nova standpoint, it is passing along the mountpoint to libvirt, and the scsi lun id is incrementing according to the order the volumes have been attached to the instance, but still it does not really work well.
-What also happens, is that the disks' serial number is set to the cinder volume id. That is something we can identify from within the vm.
 
 For example, in Ubuntu, this is already exposed under the path `/dev/disk/by-id/`, for example:
 ~~~~~~~~ bash
