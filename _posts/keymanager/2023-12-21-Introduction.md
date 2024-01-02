@@ -5,6 +5,7 @@ page_title: Introduction
 ---
 
 # Here you will find the following:
+
 -	How to Login to OpenStack Horizon.
 - How to download the source file (OpenStack RC File) in the OpenStack environment.
 -	How to authenticate with your OpenStack via the CLI.
