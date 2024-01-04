@@ -3,7 +3,6 @@ layout: page
 tags: [Keymanager]
 page_title: Introduction
 ---
-## Here you will find the following:
 
 ### Here you will find the following:
 
