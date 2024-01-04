@@ -6,7 +6,7 @@ page_title: Introduction
 This introduction will guides you through the process of managing/storing secrets in the Barbican keymanager.
 
 
-### Here you will find the following:
+# Here you will find the following:
 
 -	How to Login to OpenStack Horizon.
 - How to download the source file (OpenStack RC File) in the OpenStack environment.
