@@ -3,6 +3,8 @@ layout: page
 tags: [Keymanager]
 page_title: Introduction
 ---
+This introduction will guides you through the process of managing/storing secrets in the Barbican keymanager.
+
 
 ### Here you will find the following:
 
