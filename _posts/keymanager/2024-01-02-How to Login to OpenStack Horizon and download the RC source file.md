@@ -13,6 +13,6 @@ Login to your OpenStack Horizon environment with your credentials.
 
 
 Download the OpenStack RC source file
-![Source Download]({{ '/assets/images/keymanager/ownload-source-file.png' | relative_url }})
+![Source Download]({{ '/assets/images/keymanager/download-source-file.png' | relative_url }})
 
 
