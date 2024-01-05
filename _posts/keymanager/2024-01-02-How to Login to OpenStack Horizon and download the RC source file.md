@@ -12,11 +12,11 @@ Login to your OpenStack Horizon environment with your credentials.
 
 ![Loginscreen](https://github.com/Ebagac/OpenStack-Docs/blob/main/assets/images/Keymanager%20images/openstacklogin.png)
 
-![image info](https://github.com/Ebagac/OpenStack-Docs/blob/main/assets/images/Keymanager%20images/openstacklogin.png)
+![Login screen v2]({{ '/assets/images/keymanager/openstacklogin.png' | relative_url }})
 
 
 ![Login to your OpenStack Horizon environment with your credentials.]({{ '/assets/images/Keymanager%20images/openstacklogin.png' | relative_url }})
 
 ![title](Images/example.png)
 
-![Design]({{ '/assets/images/2023-12-20-create-ha-firewall/ha_fw_design.png' | relative_url }})
+
