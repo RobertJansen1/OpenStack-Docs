@@ -11,9 +11,11 @@ Login to your OpenStack Horizon environment with your credentials.
 
 ![Login screen]({{ '/assets/images/keymanager/openstacklogin.png' | relative_url }})
 
+Once you have logged in, you will your login name on the top rights. Click on the arrow and the following dropdown menu will appear.
 
-Download the OpenStack RC source file
-
+Click on “OpenStack RC File” to download the source file you will need for the CLI in order to authenticate with your OpenStack environment.
 ![Source Download]({{ '/assets/images/keymanager/download-source-file.png' | relative_url }})
+
+
 
 
