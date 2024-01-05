@@ -12,3 +12,4 @@ Login to your OpenStack Horizon environment with your credentials.
 
 ![Loginscreen](https://github.com/Ebagac/OpenStack-Docs/blob/main/assets/images/Keymanager%20images/openstacklogin.png)
 
+![image info](https://github.com/Ebagac/OpenStack-Docs/blob/main/assets/images/Keymanager%20images/openstacklogin.png)
