@@ -14,6 +14,6 @@ Below is without a payload, which is as follow.
 secret store --name (name)
 (Leave out brackets)
 
-![Source Download]({{ '/assets/images/keymanager/[secret list1.jpeg](https://github.com/Ebagac/OpenStack-Docs/blob/main/assets/images/keymanager/secret%20store.jpeg)' | relative_url }})
+![Source Download]({{ '/assets/images/keymanager/secret store.jpeg' | relative_url }})
 
 In the above overview you can see reference to the secret and the name that is given to it.
