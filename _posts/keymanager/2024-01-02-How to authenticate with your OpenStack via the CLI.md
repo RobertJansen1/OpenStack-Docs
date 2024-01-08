@@ -11,7 +11,7 @@ Depending on the location you have placed it in after downloading the OpenStack 
 You can do this by using the command CD <name of directory>. This will start your command line from that directory.
 As an example, that would be CD downloads for me as the file is in my downloads folder.
 
-![Login screen]({{ '/assets/images/keymanager/openstacklogin.png' | relative_url }})
+![Source Download]({{ '/assets/images/keymanager/cd downloads.jpeg' | relative_url }})
 
 Once this is done, you can authenticate with your source file.
 In my case this would be:
@@ -19,7 +19,7 @@ In my case this would be:
 “Source AMS2\ -\ ebagac-openrc.sh”
 (You can also do Source AMS2 and then use the tab button to auto fill the rest of the file name)
 
-![Source Download]({{ '/assets/images/keymanager/cd downloads.jpeg' | relative_url }})
+![Source Download]({{ '/assets/images/keymanager/source connect.jpeg' | relative_url }})
 
 Once you have entered this, you will be prompted to enter your password for your OpenStack environment.
 If the password is correct, the command line will resume without any additional message.
