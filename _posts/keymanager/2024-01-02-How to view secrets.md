@@ -17,7 +17,7 @@ _Openstack secret list_
 Once this is done, you can authenticate with your source file.
 In my case this would be:
 
-“Source AMS2\ -\ <username>-openrc.sh”
+“Source AMS2\ -\ (username)-openrc.sh”
 (You can also do Source AMS2 and then use the tab button to auto fill the rest of the file name)
 
 ![Source Download]({{ '/assets/images/keymanager/source connect.jpeg' | relative_url }})
