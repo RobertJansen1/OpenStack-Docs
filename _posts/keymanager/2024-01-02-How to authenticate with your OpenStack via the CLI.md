@@ -8,7 +8,7 @@ page_title: How to authenticate with your OpenStack via the CLI
 
 Depending on the location you have placed it in after downloading the OpenStack RC File, you will need to select that directory in the CLI.
 
-You can do this by using the command CD <name of directory>. This will start your command line from that directory.
+You can do this by using the command CD "name of directory". This will start your command line from that directory.
 As an example, that would be CD downloads for me as the file is in my downloads folder.
 
 ![Source Download]({{ '/assets/images/keymanager/cd downloads.jpeg' | relative_url }})
@@ -17,7 +17,7 @@ Once this is done, you can authenticate with your source file.
 In my case this would be:
 
 “Source AMS2\ -\ ebagac-openrc.sh”
-(You can also do Source AMS2 and then use the tab button to auto fill the rest of the file name)
+(You can also do Source AMS2 and then use the tab button to autofill the rest of the file name)
 
 ![Source Download]({{ '/assets/images/keymanager/source connect.jpeg' | relative_url }})
 
