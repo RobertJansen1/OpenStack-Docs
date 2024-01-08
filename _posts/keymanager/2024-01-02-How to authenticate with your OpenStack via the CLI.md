@@ -28,4 +28,4 @@ If the password is correct, the command line will resume without any additional 
 
 If the password is incorrect, you will receive the following message when you try to perform a command that requires authentication as seem in the screenshot below.
 
-![Source Download]({{ '/assets/images/keymanager/download-source-file.png' | relative_url }})
+![Source Download]({{ '/assets/images/keymanager/pw incorrect.jpeg' | relative_url }})
