@@ -16,4 +16,6 @@ secret store --name (name)
 
 ![Source Download]({{ '/assets/images/keymanager/secret store.jpeg' | relative_url }})
 
+![Source Download]({{ '/assets/images/keymanager/secret store.jpeg' | relative_url }})
+
 In the above overview you can see reference to the secret and the name that is given to it.
