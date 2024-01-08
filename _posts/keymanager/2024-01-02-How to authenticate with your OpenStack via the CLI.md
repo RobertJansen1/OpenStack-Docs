@@ -16,7 +16,7 @@ As an example, that would be CD downloads for me as the file is in my downloads 
 Once this is done, you can authenticate with your source file.
 In my case this would be:
 
-“Source AMS2\ -\ ebagac-openrc.sh”
+“Source AMS2\ -\ username-openrc.sh”
 (You can also do Source AMS2 and then use the tab button to autofill the rest of the file name)
 
 ![Source Download]({{ '/assets/images/keymanager/source connect.jpeg' | relative_url }})
