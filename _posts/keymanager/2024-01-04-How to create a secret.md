@@ -12,7 +12,6 @@ You can create two types of secrets, with and without payload. The difference wi
 Below is without a payload, which is as follow.
 
 secret store --name (name)
-(Leave out brackets)
 
 ![Source Download]({{ '/assets/images/keymanager/secret store.jpeg' | relative_url }})
 
