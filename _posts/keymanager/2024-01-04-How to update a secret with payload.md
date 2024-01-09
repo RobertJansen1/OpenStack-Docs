@@ -13,6 +13,6 @@ Get the “Href” URI from the secret you want to update.
 openstack secret update (your secret href) (secret name)
 (Leave out brackets)
 
-![Source Download]({{ '/assets/images/keymanager/secret update 2.jpeg | relative_url }})
+![Source Download]({{ '/assets/images/keymanager/secret update 2.jpeg' | relative_url }})
 
 In the screenshot above, you can see that the content types has changed for the secret.
