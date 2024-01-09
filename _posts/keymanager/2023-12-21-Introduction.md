@@ -8,7 +8,7 @@ This introduction will guide you through the process of managing/storing secrets
 # Here you will find the following:
 
 -	How to Login to OpenStack Horizon. 
-- [How to download the source file (OpenStack RC File) in the OpenStack environment.](https://ebagac.github.io/OpenStack-Docs/articles/How-to-Login-to-OpenStack-Horizon-and-download-the-RC-source-file)
+- How to Login to OpenStack Horizon and download the RC source file.
 -	How to authenticate with your OpenStack via the CLI.
 -	How to view secrets.
 -	How to create a secret.
