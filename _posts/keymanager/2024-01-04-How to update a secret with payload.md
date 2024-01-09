@@ -16,7 +16,4 @@ openstack secret update (your secret href) (secret name)
 
 ![Source Download]({{ '/assets/images/keymanager/secret update 2.jpeg' | relative_url }})
 
-![Source Download]({{ '/assets/images/keymanager/secret update 2.jpeg' | relative_url }})
-
-
 In the screenshot above, you can see that the content types has changed to text/plain for the secret.
