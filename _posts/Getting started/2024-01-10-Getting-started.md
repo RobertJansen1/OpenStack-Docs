@@ -1,6 +1,6 @@
-—-
+---
 layout: page
-tags: [Getting-started]
+tags: [Getting started]
 page_title: Getting started
 ---
 
