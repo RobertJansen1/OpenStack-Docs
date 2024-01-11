@@ -13,6 +13,8 @@ As an example, that would be CD downloads for me as the file is in my downloads 
 
 ~~~~~~~~ bash
 % cd downloads
+~~~~~~~~
+
 
 Once this is done, you can authenticate with your source file.
 In my case this would be:
