@@ -10,10 +10,16 @@ You cannot change the payload of a secret (other than deleting the secret), but 
 
 Get the “Href” URI from the secret you want to update.
 
-The command:
+```bash
 openstack secret update (your secret href) (secret name)
+```
 (Leave out brackets)
 
-![Source Download]({{ '/assets/images/keymanager/secret update 2.jpeg' | relative_url }})
 
-In the screenshot above, you can see that the content types has changed to text/plain for the secret.
+After doing this, you view the secret by using.
+
+``` bash
+Downloads % Openstack secret list
+```
+
+In the list you will see that the content type has changed.

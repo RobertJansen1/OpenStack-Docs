@@ -9,7 +9,7 @@ page_title: How to create a secret
 How to create a secret
 
 You can create two types of secrets, with and without payload. The difference will be visible in the “Secret list”. 
-Below is without a payload, which is as follow.
+Below is a creation of a secret a payload, which is:
 
 ```bash
 secret store --name 
