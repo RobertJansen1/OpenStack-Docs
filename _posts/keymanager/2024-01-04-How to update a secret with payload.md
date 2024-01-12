@@ -11,13 +11,16 @@ You cannot change the payload of a secret (other than deleting the secret), but 
 Get the “Href” URI from the secret you want to update.
 
 ```bash
-openstack secret update (your secret href) (secret name)
+openstack secret update (your secret href) (payload name)
 ```
+openstack secret update https://keymanager.ams2.teamblue.cloud/v1/secrets/efab91f4-9104-4274-8574-b61f82008846 twotwotwo-updated
+
 
 (Leave out brackets)
 
 
-After doing this, you view the secret by using.
+
+After doing this, you can view the secret by using.
 
 ``` bash
 Downloads % Openstack secret list
