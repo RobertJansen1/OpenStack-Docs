@@ -22,7 +22,6 @@ openstack secret update https://keymanager.ams2.teamblue.cloud/v1/secrets/efab91
 ```
 
 
-
 After doing this, you can view the secret by using.
 
 ``` bash
