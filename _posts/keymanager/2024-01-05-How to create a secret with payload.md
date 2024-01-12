@@ -6,14 +6,17 @@ page_title: How to create a secret with payload
 
 # How to create a secret with payload.
 
-To create a secret, run the <openstack secret store command> and specify the name of the secret and optionally the payload for the secret. 
-
+To create a secret, run the openstack secret store --name) command and specify the name of the secret and optionally the payload for the secret. 
+```bash
 secret store --name (name) --payload (name)
+```
 
 (Leave out brackets)
 
-![Source Download]({{ '/assets/images/keymanager/secret with payload.jpeg' | relative_url }})
+Example:
+```bash
+secret store --name openstack secret store --name test --payload Testpayload
+```
 
-To see the difference, type the command “Openstack secret list” to see the secrets.
 
-![Source Download]({{ '/assets/images/keymanager/Secret list2.jpeg' | relative_url }})
+
