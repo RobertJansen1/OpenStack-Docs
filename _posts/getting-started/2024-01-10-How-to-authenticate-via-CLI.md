@@ -26,7 +26,9 @@ If the password is correct, the command line will resume without any additional 
 
 If the password is incorrect, you will receive the following message when you try to perform a command that requires authentication as seen in the screenshot below.
 
-````
-% Openstack server list
-````
 
+> % Openstack server list
+
+```
+% Openstack server list
+```
