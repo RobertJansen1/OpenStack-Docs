@@ -12,7 +12,7 @@ You can create two types of secrets, with and without payload. The difference wi
 Below is a creation of a secret a payload, which is:
 
 ```bash
-secret store --name 
+openstack secret store --name (name)
 ```
 Replace name with the name you wnat to give your secret.
 
