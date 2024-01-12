@@ -6,7 +6,6 @@ page_title: How to view secrets
 
 # How to view secrets
 
-If you are just starting with this, you most likely will not have any secrets available yet.
 To view your secrets, type the following command in the CLI.
 
 ``` bash
