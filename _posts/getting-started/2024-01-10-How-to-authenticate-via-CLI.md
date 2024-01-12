@@ -12,10 +12,10 @@ You can do this by using the command CD "name of directory". This will start you
 As an example, that would be CD downloads for me as the file is in my downloads folder.
 
 
-> % cd downloads
+ > % cd downloads
 
 
-Once this is done, you can authenticate with your source file. In my case this would be
+Once this is done, you can authenticate with your source file. In my case this would be:
 
 ````
 Source AMS2\ -\ username-openrc.sh
