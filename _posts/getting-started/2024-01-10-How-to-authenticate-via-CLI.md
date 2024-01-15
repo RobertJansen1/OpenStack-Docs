@@ -18,7 +18,7 @@ As an example, that would be CD downloads for me as the file is in my downloads 
 Once this is done, you can authenticate with your source file. In my case this would be:
 
 ```bash
-Source AMS2\ -\ username-openrc.sh
+% source AMS2\ -\ username-openrc.sh
 ```
 
 Once you have entered this, you will be prompted to enter your password for your OpenStack environment.
@@ -28,6 +28,6 @@ If the password is incorrect, you will receive the following message when you tr
 
 
 ```bash
-% Openstack server list
+% openstack server list
 ```
 
