@@ -21,4 +21,3 @@ Example below:
 You can look up if the deletion is done correctly by using the “Openstack secret list” the command.
 
 In the screenshot below you can see that the secret has been deleted.
-
