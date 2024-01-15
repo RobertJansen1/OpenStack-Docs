@@ -18,7 +18,7 @@ Example below:
 % openstack secret delete https://keymanager.ams2.teamblue.cloud/v1/secrets/efab91f4-9104-4274-8574-b61f82008846 
 ```
 
-You can look up if the deletion is done correctly by checking by using  “Openstack secret list” the command.
+You can look up if the deletion is done correctly by using the “Openstack secret list” the command.
 
 In the screenshot below you can see that the secret has been deleted.
 

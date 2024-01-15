@@ -6,10 +6,10 @@ page_title: How to authenticate with your OpenStack via the CLI
 
 # How to authenticate with your OpenStack via the CLI
 
-Depending on the location you have placed it in after downloading the OpenStack RC File, you will need to select that directory in the CLI.
+Depending on the location you have saved or placed the source file, you will need to select that directory to authenticate.
 
-You can do this by using the command CD "name of directory". This will start your command line from that directory.
-As an example, that would be CD downloads for me as the file is in my downloads folder.
+You can do this by using the command cd "name of directory". This will start your command line from that directory.
+As an example, that would be cd downloads for me as the file is in my downloads folder.
 
 ```bash
 % cd downloads
