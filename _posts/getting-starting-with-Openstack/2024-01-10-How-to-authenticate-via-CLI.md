@@ -30,4 +30,3 @@ If the password is incorrect, you will receive the following message when you tr
 ```bash
 % openstack server list
 ```
-
