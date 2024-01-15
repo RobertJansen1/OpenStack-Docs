@@ -31,7 +31,6 @@ If the password is incorrect, you will receive the following message when you tr
 % openstack server list
 ```
 
-
 #  How to login to OpenStack Horizon.
 
 Login to your OpenStack Horizon environment with your credentials.
