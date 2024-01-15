@@ -13,5 +13,5 @@ To create a secret, run the openstack secret store --name) command and specify t
 
 Example:
 ```bash
-% openstack secret store --name openstack secret store --name test --payload Testpayload
+% openstack secret store --name test --payload Testpayload
 ```
