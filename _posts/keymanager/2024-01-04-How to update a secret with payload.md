@@ -13,7 +13,7 @@ Get the “secret Href” URL from the secret you want to update.
 ```bash
 % openstack secret update (your secret href) (payload name)
 ```
-(Leave out the brackets)
+
 
 Below an example how it would look, by adding an optional name to the secret.
 
