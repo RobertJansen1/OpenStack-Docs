@@ -24,7 +24,7 @@ Below an example how it would look, by adding an optional name to the secret.
 After doing this, you can view the secret by using "Openstack secret list"  command.
 
 ``` bash
-% Openstack secret list
+% openstack secret list
 ```
 
 The original secret will have the content type {'default': 'application/octet-stream'}

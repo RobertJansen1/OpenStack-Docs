@@ -16,6 +16,9 @@ Below is a creation of a secret without payload, which is:
 ```
 Replace name with the name you want to give your secret.
 
-![Source Download]({{ '/assets/images/keymanager/secret store.jpeg' | relative_url }})
+Example:
+```bash
+% openstack secret store --name Test
+```
 
 In the above overview you can see secret href of the secret and the name that is given to it.
