@@ -1,8 +1,14 @@
 ---
 layout: page
 tags: [getting-started]
-page_title: How to authenticate with your OpenStack via the CLI
+page_title: Openstack Horizon
 ---
+
+#  How to login to OpenStack Horizon.
+
+Login to your OpenStack Horizon environment with your credentials.
+
+![Login screen]({{ '/assets/images/keymanager/openstacklogin.jpeg' | relative_url }})
 
 # How to authenticate with your OpenStack via the CLI
 
@@ -30,9 +36,3 @@ If the password is incorrect, you will receive the following message when you tr
 ```bash
 % openstack server list
 ```
-
-#  How to login to OpenStack Horizon.
-
-Login to your OpenStack Horizon environment with your credentials.
-
-![Login screen]({{ '/assets/images/keymanager/openstacklogin.jpeg' | relative_url }})
