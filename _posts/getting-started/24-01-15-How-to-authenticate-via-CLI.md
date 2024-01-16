@@ -1,16 +1,16 @@
 ---
 layout: page
 tags: [getting-started]
-page_title: Openstack Horizon
+page_title: Logging into Openstack Horizon
 ---
 
-#  How to login to OpenStack Horizon.
+##  How to login to OpenStack Horizon.
 
 Login to your OpenStack Horizon environment with your credentials.
 
 ![Login screen]({{ '/assets/images/keymanager/openstacklogin.jpeg' | relative_url }})
 
-# How to authenticate with your OpenStack via the CLI
+## How to authenticate with your OpenStack via the CLI
 
 Depending on the location you have saved or placed the source file, you will need to select that directory to authenticate.
 
