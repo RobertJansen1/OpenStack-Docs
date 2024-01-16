@@ -1,7 +1,7 @@
 ---
 layout: page
 tags: [getting-started]
-page_title: Logging into Openstack Horizon
+page_title: Connecting with Openstack Horizon
 ---
 
 ##  How to login to OpenStack Horizon.
