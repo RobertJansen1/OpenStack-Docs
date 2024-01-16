@@ -27,7 +27,7 @@ After doing this, you can view the secret by using "Openstack secret list"  comm
 % openstack secret list
 ```
 
-The original secret will have the content type {'default': 'application/octet-stream'}
+The original secret will have the content type {'default': 'application/octet-stream'}.
 The updated secret will have the content type {'default': 'text/plain'}, which will overwrite the original secret.
 
 In the list you will see that the content type has changed of the corresponding secret.
