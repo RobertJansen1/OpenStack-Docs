@@ -34,7 +34,7 @@ It may happen that you do not have volume types, if this is the case you can cre
 
 In practise, this would look like:
 
-```
+```bash
 openstack volume type create --description "My Volume Type" --public --property key1=value1 --property key2=value2 MyVolumeType
 ```
 
