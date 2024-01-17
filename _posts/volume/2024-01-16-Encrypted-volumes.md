@@ -10,7 +10,7 @@ In order to create an encrypted volume, the user needs to have the creator or ad
 
 It may be that you do not possess any volume types, if this is the case you have to create a volume type.
 
-## Creating a volume type
+### Creating a volume type
 
 ```bash
 % openstack volume type create
@@ -40,7 +40,7 @@ In practise, this would look like:
 openstack volume type create --description "Test Volume Type" --public --property key1=value1 --property key2=value2 Volumetypetest
 ```
 
-## Viewing the volume types
+### Viewing the volume types
 View the result by using the command:
 
 ```bash
@@ -63,7 +63,7 @@ Example:
 % openstack volume type show (Volumetypetest)
 ```
 
-## Deleting volume types
+### Deleting volume types
 
 In order to delete a volume type, you can use the following command, followed up by the ID or name of the volume type.
 
