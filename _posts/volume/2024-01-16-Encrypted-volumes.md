@@ -3,7 +3,7 @@ layout: page
 tags: [Volume]
 page_title: Creating an encrypted volume
 ---
-
+---
 # Requirements to create an encrypted volume
 
 In order to create an encrypted volume, the user needs to have the creator or admin barbican role on the project.
@@ -75,4 +75,6 @@ As we named our volume type "Volumetypetest" earlier, we place it at the end of 
 ```bash
 % openstack volume type delete Volumetypetest
 ```
+---
+# Creating an encrypted volume
 
