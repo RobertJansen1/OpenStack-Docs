@@ -6,13 +6,14 @@ page_title: Volume types & encrypted volumes
 
 # Requirements to create an encrypted volume
 
-In order to encrypt volumes, the user needs to have the creator or admin barbican role on the project.
+In order to create an encrypted template, volume type & volume type, make sure you have the necessary permissions and configurations set up to execute this command successfully in your OpenStack environment.
+
 
 It may be that you do not possess any volume types, if this is the case you have to create a volume type.
 
 Before starting of a volume type, a volume template needs to be in place.
 
-### Creating a volume template
+### Creating a volume template that uses encryption
 
 Let us create a volume template that uses encryption. Whenever you create new volumes, you can refer to this volume template.
 
@@ -26,20 +27,18 @@ Let us create a volume template that uses encryption. Whenever you create new vo
 
 LuksEncryptor-Template-256: The name of the new volume type you are creating..
 
-To read more about this, you can use the command "openstack volume type create --help"
+To read more about these points, you can use the command "openstack volume type create --help"
 
-Make sure you have the necessary permissions and configurations set up to execute this command successfully in your OpenStack environment.
-
-It would look like:
+Creating a volume template with encryption would look like:
 
 ```bash
 % openstack volume type create --encryption-provider nova.volume.encryptors.luks.LuksEncryptor --encryption-cipher aes-xts-plain64 --encryption-key-size 256 --encryption-control-location front-end LuksEncryptor-Template-256
 ```
 
-### Creating a volume type
+## Creating a volume type
 
 ```bash
-% openstack volume type create \     --encryption-provider nova.volume.encryptors.luks.LuksEncryptor \     --encryption-cipher aes-xts-plain64 \     --encryption-key-size 256 \     --encryption-control-location front-end \     LuksEncryptor-Template-256 
+% openstack volume create --size 1 --type LuksEncryptor-Template-256 'Encrypted-Test-Volume'
 ```
 --description (Test Volume Type): Optional. You can provide a description for the new volume type.
 
@@ -54,13 +53,17 @@ It would look like:
 
 (name): Must give a name. The name of the new volume type.
 
+```bash
+% openstack volume type create --encryption-provider nova.volume.encryptors.luks.LuksEncryptor --encryption-cipher aes-xts-plain64 --encryption-key-size 256 --encryption-control-location front-end LuksEncryptor-Template-256 
+```
+
 In practise, this would look like:
 
 ```bash
 openstack volume type create --description "Test Volume Type" --public --property key1=value1 --property key2=value2 Volumetypetest
 ```
 
-### Viewing the volume types
+## Viewing the volume types
 View the result by using the command:
 
 ```bash
@@ -69,7 +72,7 @@ View the result by using the command:
 
 This will give a list of available volune types. It sill show the "ID", "Name"  and whether the volume type is public or private.
 
-### Viewing a specific volume
+## Viewing a specific volume
 
 To view the details of a specific volume type, use the command:
 
@@ -80,10 +83,10 @@ To view the details of a specific volume type, use the command:
 Example:
 
 ```bash
-% openstack volume type show (Volumetypetest)
+% openstack volume type show LuksEncryptor-Template-256
 ```
 
-### Deleting volume types
+## Deleting volume type
 
 In order to delete a volume type, you can use the following command, followed up by the ID or name of the volume type.
 
@@ -96,5 +99,5 @@ As we named our volume type "Volumetypetest" earlier, we place it at the end of 
 % openstack volume type delete Volumetypetest
 ```
 
-# Creating an encrypted volume
+## Creating an encrypted volume
 
