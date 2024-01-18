@@ -57,20 +57,15 @@ The commando creating a volume template with encryption would look like:
 % openstack volume type create --description "Description of the new volume type" --public --property key1=value1 --property key2=value2 NewVolumeType
 ```
 
-In practise, this would look like:
-
-```bash
-openstack volume type create --description "Test Volume Type" --public --property key1=value1 --property key2=value2 Volumetypetest
-```
-
 ## Viewing the volume types
+
 View the result by using the command:
 
 ```bash
 % openstack volume type list
 ```
 
-This will give a list of available volune types. It sill show the "ID", "Name"  and whether the volume type is public or private.
+This will give a list of available volune types. It will show the "ID", "Name"  and whether the volume type is public or private.
 
 ## Viewing a specific volume
 
