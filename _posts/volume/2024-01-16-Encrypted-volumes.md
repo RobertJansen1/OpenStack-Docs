@@ -13,7 +13,7 @@ It may be that you do not possess any volume types, if this is the case you have
 
 Before starting of a volume type, a volume template needs to be in place.
 
-### Creating a volume template that uses encryption
+## Creating a volume template that uses encryption
 
 Let us create a volume template that uses encryption. Whenever you create new volumes, you can refer to this volume template.
 
@@ -29,7 +29,7 @@ LuksEncryptor-Template-256: The name of the new volume type you are creating..
 
 To read more about these points, you can use the command "openstack volume type create --help"
 
-Creating a volume template with encryption would look like:
+The commando creating a volume template with encryption would look like:
 
 ```bash
 % openstack volume type create --encryption-provider nova.volume.encryptors.luks.LuksEncryptor --encryption-cipher aes-xts-plain64 --encryption-key-size 256 --encryption-control-location front-end LuksEncryptor-Template-256
@@ -51,10 +51,10 @@ Creating a volume template with encryption would look like:
 
 --project-domain <project-domain>: Optional. Specifies the domain of the project.
 
-(name): Must give a name. The name of the new volume type.
+(name): Give the volume a name. Remove the brackets
 
 ```bash
-% openstack volume type create --encryption-provider nova.volume.encryptors.luks.LuksEncryptor --encryption-cipher aes-xts-plain64 --encryption-key-size 256 --encryption-control-location front-end LuksEncryptor-Template-256 
+% openstack volume type create --description "Description of the new volume type" --public --property key1=value1 --property key2=value2 NewVolumeType
 ```
 
 In practise, this would look like:
