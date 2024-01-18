@@ -14,7 +14,7 @@ Before starting of a volume type, a volume template needs to be in place.
 
 ### Creating a volume template
 
-Let us create a volume template that uses encryption. When you create new volumes, you can refer to this volume template.
+Let us create a volume template that uses encryption. Whenever you create new volumes, you can refer to this volume template.
 
 --encryption-provider: Specifies the encryption provider, in this case, nova.volume.encryptors.luks.LuksEncryptor.
 
@@ -24,7 +24,7 @@ Let us create a volume template that uses encryption. When you create new volume
 
 --encryption-control-location: Defines the encryption control location as front-end.
 
---Name of template: The name you've given to the volume type.
+LuksEncryptor-Template-256: The name of the new volume type you are creating..
 
 To read more about this, you can use the command "openstack volume type create --help"
 
@@ -33,19 +33,13 @@ Make sure you have the necessary permissions and configurations set up to execut
 It would look like:
 
 ```bash
-openstack volume type create --encryption-provider nova.volume.encryptors.luks.LuksEncryptor --encryption-cipher aes-xts-plain64 --encryption-key-size 256 --encryption-control-location front-end template-test
+% openstack volume type create --encryption-provider nova.volume.encryptors.luks.LuksEncryptor --encryption-cipher aes-xts-plain64 --encryption-key-size 256 --encryption-control-location front-end LuksEncryptor-Template-256
 ```
 
 ### Creating a volume type
 
 ```bash
-% openstack volume type create
-    [--description <description>]
-    [--public | --private]
-    [--property <key=value> [...] ]
-    [--project <project>]
-    [--project-domain <project-domain>]
-    <name>
+% openstack volume type create \     --encryption-provider nova.volume.encryptors.luks.LuksEncryptor \     --encryption-cipher aes-xts-plain64 \     --encryption-key-size 256 \     --encryption-control-location front-end \     LuksEncryptor-Template-256 
 ```
 --description (Test Volume Type): Optional. You can provide a description for the new volume type.
 
