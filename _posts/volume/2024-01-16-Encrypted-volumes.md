@@ -6,9 +6,35 @@ page_title: Volume types & encrypted volumes
 
 # Requirements to create an encrypted volume
 
-In order to create an encrypted volume, the user needs to have the creator or admin barbican role on the project.
+In order to encrypt volumes, the user needs to have the creator or admin barbican role on the project.
 
 It may be that you do not possess any volume types, if this is the case you have to create a volume type.
+
+Before starting of a volume type, a volume template needs to be in place.
+
+### Creating a volume template
+
+Let us create a volume template that uses encryption. When you create new volumes, you can refer to this volume template.
+
+--encryption-provider: Specifies the encryption provider, in this case, nova.volume.encryptors.luks.LuksEncryptor.
+
+--encryption-cipher: Sets the encryption cipher to aes-xts-plain64.
+
+--encryption-key-size: Specifies the encryption key size as 256.
+
+--encryption-control-location: Defines the encryption control location as front-end.
+
+--Name of template: The name you've given to the volume type.
+
+To read more about this, you can use the command "openstack volume type create --help"
+
+Make sure you have the necessary permissions and configurations set up to execute this command successfully in your OpenStack environment.
+
+It would look like:
+
+```bash
+openstack volume type create --encryption-provider nova.volume.encryptors.luks.LuksEncryptor --encryption-cipher aes-xts-plain64 --encryption-key-size 256 --encryption-control-location front-end template-test
+```
 
 ### Creating a volume type
 
@@ -26,7 +52,7 @@ It may be that you do not possess any volume types, if this is the case you have
 --public or --private: This is optional. Specifies whether the volume type should be public or private. You can use either 
 --public to make it public or --private to make it private, depending on your preferences.
 
---property (key1=value1) [...]: This is optional. You can set extra key-value properties for the volume type. Replace <key=value> with the specific properties you want to set.
+--property (key1=value1) [...]: This is optional. You can set extra key-value properties for the volume type. Add, update, or remove properties (extra specifications) associated with the volume type.
 
 --project <project>: Optional. Specifies the project (tenant) to which the volume type belongs.
 
