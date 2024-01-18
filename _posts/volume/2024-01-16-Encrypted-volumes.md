@@ -37,10 +37,11 @@ The commando creating a volume template with encryption would look like:
 
 ## Creating a volume type
 
+With the commando below, you can create  
 ```bash
 % openstack volume create --size 1 --type LuksEncryptor-Template-256 'Encrypted-Test-Volume'
 ```
---description (Test Volume Type): Optional. You can provide a description for the new volume type.
+--description: Optional. You can provide a description for the new volume type.
 
 --public or --private: This is optional. Specifies whether the volume type should be public or private. You can use either 
 --public to make it public or --private to make it private, depending on your preferences.
@@ -80,6 +81,7 @@ Example:
 ```bash
 % openstack volume type show LuksEncryptor-Template-256
 ```
+Replace the type with the name of your own created template.
 
 ## Deleting volume type
 
@@ -108,4 +110,4 @@ By adding a type to this volume, we can make it encrypted as a template was crea
 ```bash
 % openstack volume create --size 10 --type LuksEncryptor-Template-256 EncryptedVolume
 ```
-
+An encrypted volume now created with 10 GB of size and using the LuksEncryptor-Template-256 template with the name EncryptedVolume.
