@@ -6,7 +6,7 @@ page_title: Volume types & encrypted volumes
 
 # Requirements to create an encrypted volume
 
-In order to create an encrypted template, volume type & volume type, make sure you have the necessary permissions and configurations set up to execute this command successfully in your OpenStack environment.
+In order to create an encrypted template, volume type & volume type, make sure you have the required permissions and configurations set up to execute this command successfully in your OpenStack environment.
 
 
 It may be that you do not possess any volume types, if this is the case you have to create a volume type.
@@ -16,6 +16,7 @@ Before starting of a volume type, a volume template needs to be in place.
 ## Creating a volume template that uses encryption
 
 Let us create a volume template that uses encryption. Whenever you create new volumes, you can refer to this volume template.
+We will be using the LuksEncryptor-Template-256 template as a default. You can replace this with the name you wish to use.
 
 --encryption-provider: Specifies the encryption provider, in this case, nova.volume.encryptors.luks.LuksEncryptor.
 
@@ -37,7 +38,8 @@ The commando creating a volume template with encryption would look like:
 
 ## Creating a volume type
 
-With the commando below, you can create  
+With the commando below, you can create a volume type.
+
 ```bash
 % openstack volume create --size 1 --type LuksEncryptor-Template-256 'Encrypted-Test-Volume'
 ```
