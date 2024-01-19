@@ -38,26 +38,10 @@ The commando creating a volume template with encryption would look like:
 
 ## Creating a volume type
 
-With the commando below, you can create a volume type.
+With the commando below, you can create a volume type that specifies the volume setting "luksEncryptor-Template-256" we created above. 
 
 ```bash
-% openstack volume create --size 1 --type LuksEncryptor-Template-256 'Encrypted-Test-Volume'
-```
---description: Optional. You can provide a description for the new volume type.
-
---public or --private: This is optional. Specifies whether the volume type should be public or private. You can use either 
---public to make it public or --private to make it private, depending on your preferences.
-
---property (key1=value1) [...]: This is optional. You can set extra key-value properties for the volume type. Add, update, or remove properties (extra specifications) associated with the volume type.
-
---project <project>: Optional. Specifies the project (tenant) to which the volume type belongs.
-
---project-domain <project-domain>: Optional. Specifies the domain of the project.
-
-(name): Give the volume a name. Remove the brackets
-
-```bash
-% openstack volume type create --description "Description of the new volume type" --public --property key1=value1 --property key2=value2 NewVolumeType
+% openstack volume create --size 1 --type LuksEncryptor-Template-256 Encrypted-Test-Volume
 ```
 
 ## Viewing the volume types
