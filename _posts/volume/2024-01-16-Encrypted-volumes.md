@@ -68,7 +68,7 @@ View the result by using the command:
 % openstack volume type list
 ```
 
-This will give a list of available volune types. It will show the "ID", "Name"  and whether the volume type is public or private.
+This will give a list of available volume types. It will show the "ID", "Name"  and whether the volume type is public or private.
 
 ## Viewing a specific volume
 
