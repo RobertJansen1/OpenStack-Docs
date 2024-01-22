@@ -16,7 +16,7 @@ Before starting of a volume type, a volume template needs to be in place.
 ## Creating a volume template that uses encryption
 
 Let us create a volume template that uses encryption. Whenever you create new volumes, you can refer to this volume template.
-We will be using the LuksEncryptor-Template-256 template as a default. You can replace this with the name you wish to use.
+We will be using the LuksEncryptor-Template-256 template as a default. You can replace this with the name you wish to use for your template.
 
 --encryption-provider: Specifies the encryption provider, in this case, nova.volume.encryptors.luks.LuksEncryptor.
 
@@ -76,7 +76,7 @@ In order to delete a volume type, you can use the following command, followed up
 ```bash
 % openstack volume type delete (ID or name)
 ```
-As we named our volume type "Volumetypetest" earlier, we place it at the end of the command. The ID is visible after you used the (% openstack volume type list) command.
+As we named our volume type "Volumetypetest" earlier, we place it at the end of the command. The ID is visible after you used the ```% openstack volume type list``` command.
 
 ```bash
 % openstack volume type delete LuksEncryptor-Template-256
