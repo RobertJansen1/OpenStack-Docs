@@ -76,7 +76,7 @@ In order to delete a volume type, you can use the following command, followed up
 ```bash
 % openstack volume type delete (ID or name)
 ```
-As we named our volume type "Volumetypetest" earlier, we place it at the end of the command. The ID is visible after you used the ```% openstack volume type list``` command.
+As we named our volume type "LuksEncryptor-Template-256" earlier, we place it at the end of the command. The ID is visible after you used the ```% openstack volume type list``` command.
 
 ```bash
 % openstack volume type delete LuksEncryptor-Template-256
@@ -91,9 +91,9 @@ We know how we create a regular volume, with the commando:
 ```bash
 % openstack volume create --size 10 EncryptedVolume
 ```
-By adding a type to this volume, we can make it encrypted as a template was created.
+By adding a type to this volume, we can make it encrypted as a template was created in the earlier steps.
 
 ```bash
 % openstack volume create --size 10 --type LuksEncryptor-Template-256 EncryptedVolume
 ```
-An encrypted volume now created with 10 GB of size and using the LuksEncryptor-Template-256 template with the name EncryptedVolume.
+An encrypted volume is now created with 10 GB of size and using the LuksEncryptor-Template-256 template with the name EncryptedVolume.
