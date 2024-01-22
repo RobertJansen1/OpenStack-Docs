@@ -18,15 +18,15 @@ Before starting of a volume type, a volume template needs to be in place.
 Let us create a volume template that uses encryption. Whenever you create new volumes, you can refer to this volume template.
 We will be using the LuksEncryptor-Template-256 template as a default. You can replace this with the name you wish to use for your template.
 
---encryption-provider: Specifies the encryption provider, in this case, nova.volume.encryptors.luks.LuksEncryptor.
+```--encryption-provider:``` Specifies the encryption provider, in this case, nova.volume.encryptors.luks.LuksEncryptor.
 
---encryption-cipher: Sets the encryption cipher to aes-xts-plain64.
+```--encryption-cipher:``` Sets the encryption cipher to aes-xts-plain64.
 
---encryption-key-size: Specifies the encryption key size as 256.
+```--encryption-key-size:``` Specifies the encryption key size as 256.
 
---encryption-control-location: Defines the encryption control location as front-end.
+```--encryption-control-location:``` Defines the encryption control location as front-end.
 
-LuksEncryptor-Template-256: The name of the new volume type you are creating..
+```LuksEncryptor-Template-256:``` The name of the new volume type you are creating..
 
 To read more about these points, you can use the command "openstack volume type create --help"
 
