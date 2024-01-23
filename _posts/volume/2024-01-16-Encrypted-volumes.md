@@ -9,7 +9,7 @@ page_title: Volume types & encrypted volumes
 In order to create an encrypted template, volume type & volume type, make sure you have the required permissions and configurations set up to execute this command successfully in your OpenStack environment.
 
 
-It may be that you do not possess any volume types, if this is the case you have to create a volume type.
+If you do not have any volume teplates, you will have to create a volume template.
 
 Before starting of a volume type, a volume template needs to be in place.
 
