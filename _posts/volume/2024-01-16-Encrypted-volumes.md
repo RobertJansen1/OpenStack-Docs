@@ -30,7 +30,7 @@ We will be using the LuksEncryptor-Template-256 template as a default. You can r
 
 To read more about these points, you can use the command "openstack volume type create --help"
 
-The commando creating a volume template with encryption would look like:
+The commando for creating a volume template with encryption would look like:
 
 ```bash
 % openstack volume type create --encryption-provider nova.volume.encryptors.luks.LuksEncryptor --encryption-cipher aes-xts-plain64 --encryption-key-size 256 --encryption-control-location front-end LuksEncryptor-Template-256
@@ -76,7 +76,7 @@ In order to delete a volume type, you can use the following command, followed up
 ```bash
 % openstack volume type delete (ID or name)
 ```
-As we named our volume type "LuksEncryptor-Template-256" earlier, we place it at the end of the command. The ID is visible after you used the ```% openstack volume type list``` command.
+As we named our volume type "LuksEncryptor-Template-256" earlier, we place it at the end of the command. The ID is visible after you have used the ```% openstack volume type list``` command.
 
 ```bash
 % openstack volume type delete LuksEncryptor-Template-256
