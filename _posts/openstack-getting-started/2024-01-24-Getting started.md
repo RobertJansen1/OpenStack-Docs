@@ -1,6 +1,6 @@
 ---
 layout: page
-tags: [getting-started]
+tags: [openstack-getting-started]
 page_title: Getting started
 ---
 
