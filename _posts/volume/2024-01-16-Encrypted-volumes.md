@@ -1,7 +1,7 @@
 ---
 layout: page
 tags: [Volume]
-page_title: Encrypted volumes
+page_title: Creating an encrypted volume.
 ---
 
 ## Deleting volume type
