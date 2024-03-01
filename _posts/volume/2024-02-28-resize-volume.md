@@ -106,6 +106,10 @@ After resizing the volume within OpenStack, you will need to resize the
 filesystem within the instance (server) as well. We recommend using the
 documentation provided by Microsoft to [resize the filesystem](https://learn.microsoft.com/en-us/windows-server/storage/disk-management/extend-a-basic-volume).
 
+[Instruction for resizing using Disk Management](#using-disk-management)
+
+[Instruction for resizing using PowerShell](#using-powershell)
+
 #### Using Disk Management
 
 Right-click the windows logo in the left bottom corner and click
