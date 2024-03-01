@@ -73,9 +73,9 @@ able to use the new space. To do this please proceed to the section:
 For both Linux and Windows, you will need to resize the filesystem within the
 instance (server) as well.
 
-[Instructions for linux](#linux)
+[Instructions for Linux](#linux)
 
-[Instructions for windows](#windows)
+[Instructions for Windows](#windows)
 
 ### Linux
 After resizing the volume within OpenStack, you will need to resize the
@@ -109,11 +109,11 @@ documentation provided by Microsoft to [resize the filesystem](https://learn.mic
 #### Using Disk Management
 
 Right-click the windows logo in the left bottom corner and click
-on `Disk Management`.
-https://jhcsmedia.com/ba0d0aa9-1b8c-40f2-84f5-04e2f841b7ce/content/7029744f-13a9-47bc-827a-297e38c12e83
+on `Disk Management`.  
+<img class="rounded border border-dark" src="{{ '/assets/images/2024-02-28-resize-volume/2024-02-28-open-diskmanagement.png' | relative_url }}" width="auto" height="400" />
 
-Right-click the volume you want to resize and click `Extend Volume`.
-https://jhcsmedia.com/ba0d0aa9-1b8c-40f2-84f5-04e2f841b7ce/content/04ef65c5-c379-4e34-9c93-5b19fd631c5d
+Right-click the volume you want to resize and click `Extend Volume`.  
+<img class="rounded border border-dark" src="{{ '/assets/images/2024-02-28-resize-volume/2024-02-28-diskmanagement.png' | relative_url }}" width="auto" height="500" />
 
 Follow the wizard to extend the volume and click `Finish` to complete the
 process.
@@ -123,11 +123,11 @@ then `Finish` in the wizard.
 #### Using PowerShell
 To resize the filesystem using PowerShell, you can use the `Resize-Partition`
 cmdlet. The Powershell script below will resize the partition to the maximum
-size. Replace `<Drive Letter>` with the drive letter of the partition you want
+size. Replace `<drive_letter>` with the drive letter of the partition you want
 to resize.
 ```powershell
 # Set the drive/partition you want to resize
-$TargetDrive = "<Drive Letter>"
+$TargetDrive = "<drive_letter>"
 
 # Get the maximum size of the partition
 $DriveSize = (Get-PartitionSupportedSize -DriveLetter $TargetDrive)
