@@ -50,13 +50,15 @@ be attached to instances in different availability zones.
 volume will be created. This is can be a handy tool if you have multiple volume
 in your OpenStack environment and want to group them together.
 
-**Step 5**
+**Step 5**  
 Click on the small arrow button behind the newly created volume to see actions
 menu and click on `Manage Attachments`
 
-**Step 6**
+**Step 6**  
 Select the instance you want to attach the volume to and click on
 `Attach Volume` to attach the volume to the instance.
+
+---
 
 ## Using the OpenStack CLI
 Creating a volume through the OpenStack CLI can be a bit more complicated than
@@ -64,7 +66,12 @@ using the OpenStack Dashboard, but when you get the hang of it, it can be a
 powerful tool.
 
 **Step 1**  
-Log in to the OpenStack CLI
+First make sure you have setup the OpenStack CLI and that you are able to
+execute commands using the `openstack` command. For more information please
+refer to the
+[Using the OpenStack CLI article](
+    {{ '/articles/using-the-cli-linux' | relative_url }}
+).
 
 **Step 2**  
 Run the following command to create a volume:
@@ -87,6 +94,8 @@ Attach the volume to an instance by running the following command:
 openstack server add volume <instance_name/instance_id> <volume_name/volume_id>
 ```
 
+---
+
 ## Mounting the volume within the instance
 After you have created and attached the volume to an instance, you can mount
 the volume within the instance. The process of mounting a volume is different
@@ -100,7 +109,7 @@ an adding an filesystem to it so you can use it to store your data.
 
 [Instruction for Windows](#windows)
 
-## Linux
+### Linux
 **Step 1**  
 You can identify the volume by its size and mountpoint. For example, if the
 volume is 10GB and has no mountpoint, it is likely the volume you just
@@ -151,12 +160,13 @@ sudo mount <volume> /mnt/data-volume
 
 You can now use the volume to store your data.
 
+---
 
-### Mounting the volume automatically
+#### Mounting the volume automatically
 If you want to mount the volume automatically after a reboot, we need to add
 an entry to the `/etc/fstab` file.
 
-**Step 1**
+**Step 1**  
 First we need to identify the volume by its UUID. You can do this by running
 the following command:
 
@@ -169,7 +179,7 @@ above (for example: `/dev/sdb`).
 sudo blkid
 ```
 
-**Step 2**
+**Step 2**  
 Now we need to add an entry to the `/etc/fstab` file. We will use the UUID we
 found in the previous step to identify the volume.
 
@@ -184,7 +194,7 @@ UUID=<linux_volume_id> /mnt/data-volume ext4 defaults 0 0
 
 To save the file press `CTRL + X`, then `Y`, and then `ENTER`.
 
-**Step 3**
+**Step 3**  
 Test the `/etc/fstab` file by running the following command:
 
 ```bash
@@ -194,7 +204,9 @@ sudo mount -a
 The volume should now be mounted automatically after a reboot. If you received
 an error, please check the `/etc/fstab` file for any errors.
 
-## Windows
+---
+
+### Windows
 **Step 1**  
 Right-click the windows logo in the left bottom corner and click
 on `Disk Management`.  
