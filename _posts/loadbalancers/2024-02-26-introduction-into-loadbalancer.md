@@ -11,7 +11,7 @@ the uses, options, benefits and how to create a loadbalancer.
 Loadbalancers can be an essential part of a cloud infrastructure. Loadbalancers can be used to
 distribute the incoming traffic to multiple servers. This can in turn increase the availability of
 the servers and the applications. OpenStack Octavia is a loadbalancer service that provides
-loadbalancing services to the OpenStack cloud. Octavia is a scalable, on-demand, and reliable
+loadbalancing services to the OpenStack cloud. Octavia is a on-demand and reliable
 loadbalancer service. Octavia is a replacement for the older Neutron LBaaS service.
 
 ---
@@ -20,19 +20,16 @@ loadbalancer service. Octavia is a replacement for the older Neutron LBaaS servi
 There are two types of Loadbalancers in OpenStack Octavia which can be used to create your
 Loadbalancer setup.
 
-
 ### Single Loadbalancer
 A single loadbalancer setup is a simple setup where a single loadbalancer is used to distribute the
 incoming traffic to the backend servers/applications. This setup is suitable for non-critical
 applications because if the loadbalancer fails, the whole setup will be down.
-
 
 ### Active/Standby Loadbalancer (High Availability)
 The Active/Standby Loadbalancer setup is a more reliable setup where the standy loadbalancer will
 take over the traffic if the active loadbalancer fails. This setup is highly recommended and
 essential for critical applications. This setup can be used to make sure the availability of the
 servers and applications can be assured.
-
 
 ### Flavors
 Loadbalancer flavors are used to chose between the Single and Active/Standby Loadbalancer
@@ -123,5 +120,5 @@ loadbalancer.
 ## Conclusion
 Loadbalancers can be an essential part of a cloud infrastructure. Loadbalancers can be used to
 distribute the incoming traffic to multiple servers. This can in turn increase the availability of
-the servers and the applications. OpenStack Octavia provides a scalable, on-demand, and reliable
+the servers and the applications. OpenStack Octavia provides a on-demand and reliable
 loadbalancer service which is easy to use and manage for your cloud infrastructure.
