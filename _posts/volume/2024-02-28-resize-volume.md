@@ -34,10 +34,18 @@ to extend your filesystem within the instance (server) as well before you are
 able to use the new space. To do this please proceed to the section: 
 [Resize filesystem within the instance](#resize-filesystem-within-the-instance)
 
+---
+
 ## Using the OpenStack CLI
 To resize a volume using the OpenStack CLI, please follow these steps:
+
 **Step 1**  
-First log in to the OpenStack CLI
+First make sure you have setup the OpenStack CLI and that you are able to
+execute commands using the `openstack` command. For more information please
+refer to the
+[Using the OpenStack CLI article](
+    {{ '/articles/using-the-cli-linux' | relative_url }}
+).
 
 **Step 2**  
 Identitfy the volume you want to resize we do this by listing the volumes
@@ -67,6 +75,7 @@ to extend your filesystem within the instance (server) as well before you are
 able to use the new space. To do this please proceed to the section: 
 [Resize filesystem within the instance](#resize-filesystem-within-the-instance)
 
+---
 
 ## Resize filesystem within the instance
 
@@ -100,6 +109,8 @@ the `resize2fs` command.
 ```bash
 resize2fs <disk/partition>
 ```
+
+---
 
 ### Windows
 After resizing the volume within OpenStack, you will need to resize the
