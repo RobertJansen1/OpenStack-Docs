@@ -178,7 +178,7 @@ an entry to the `/etc/fstab` file.
 
 When managing multiple volumes on a single instance, it might be more feasible 
 to use the procedure on 
-[Identify cinder volumes from within the instance]({{ '/articles/Identify-cinder-volumes-from-within-the-instance' | relative_url }}).
+[Identify cinder volumes from within the instance]({{ '/articles/identify-volumes' | relative_url }}).
 Or use the steps below. Both procedures result in an automatically mounted volume
 
 **Step 1**  
