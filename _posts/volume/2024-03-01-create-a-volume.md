@@ -28,12 +28,14 @@ Click on `Create Volume` button right above the volume list.
 **Step 4**  
 Fill in the details of the volume you want to create. You can specify the size
 of the volume, the availability zone, and the volume type. Please feel free
-to change any of the example settings to your needs.
+to change any of the example settings to your needs. 
+
+
 
 - **Volume Name**: data-volume
 - **Description**: This is a volume for storing data
 - **Volume Source**: NO SOURCE, EMPTY VOLUME (please see the note below)
-- **Type**: SSD
+- **Type**: SSD (please see the note below)
 - **Size (GiB)**: 10
 - **Availability Zone**: ANY AVAILABILITY ZONE (please see the note below)
 - **Group**: NO GROUP (please see the note below)
@@ -41,6 +43,10 @@ to change any of the example settings to your needs.
 > **Note**: The `Volume Source` field is used to create a volume from an
 existing volume, snapshot, or image. If you want to create an empty volume, 
 select `NO SOURCE, EMPTY VOLUME`.
+
+> **Note**: The `Type` field is often used to provide different specifications
+or storage tiers. Some volume types might support volume encryption as well.
+Most OpenStack providers provide distinct naming for encrypted volume types.
 
 > **Note**: The `Availability Zone` field is used to specify the availability
 zone where the volume will be created. This is important since volumes cannot
@@ -79,6 +85,10 @@ Run the following command to create a volume:
 ```bash
 openstack volume create --size <volume_size --type <volume_type> --availability-zone <availability_zone> <volume_name>
 ```
+> **Note**: The `volume_type` is often used to provide different specifications
+or storage tiers. Some volume types might support volume encryption as well.
+Consult the documentation of your OpenStack providers to select the proper volume
+type.
 
 **Step 3**  
 Check the status of the volume by running the following command:
@@ -165,6 +175,11 @@ You can now use the volume to store your data.
 #### Mounting the volume automatically
 If you want to mount the volume automatically after a reboot, we need to add
 an entry to the `/etc/fstab` file.
+
+When managing multiple volumes on a single instance, it might be more feasible 
+to use the procedure on 
+[Identify cinder volumes from within the instance]({{ '/articles/identify-volumes' | relative_url }}).
+Or use the steps below. Both procedures result in an automatically mounted volume
 
 **Step 1**  
 First we need to identify the volume by its UUID. You can do this by running
