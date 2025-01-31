@@ -163,22 +163,41 @@ DNS for the domain needs to be configured for the domain to use the OpenStack DN
     def renew_certificate(self):
         if self.args.renew and not self.args.key_path:
             print(f"Renewing domain: {self.domain} with certbot")
-            certbot_args = [
-                "certonly",
-                "--non-interactive",
-                "--agree-tos",
-                "--authenticator",
-                "certbot-dns-openstack:dns-openstack",
-                "--certbot-dns-openstack:dns-openstack-cloud",
-                self.args.os_cloud,
-                "-d",
-                self.domain,
-            ]
-            if self.args.email:
-                certbot_args.extend(["--email", self.args.email])
-            if self.args.force_renewal:
-                certbot_args.append("--force-renewal")
-            certbot.main.main(certbot_args)
+            # check for the version of certbot
+            if certbot.__version__ >= "1.0":
+                certbot_args = [
+                    "certonly",
+                    "--non-interactive",
+                    "--agree-tos",
+                    "--authenticator",
+                    "dns-openstack",
+                    "--dns-openstack-cloud",
+                    self.args.os_cloud,
+                    "-d",
+                    self.domain,
+                ]
+                if self.args.email:
+                    certbot_args.extend(["--email", self.args.email])
+                if self.args.force_renewal:
+                    certbot_args.append("--force-renewal")
+                certbot.main.main(certbot_args)
+            else:
+                certbot_args = [
+                    "certonly",
+                    "--non-interactive",
+                    "--agree-tos",
+                    "--authenticator",
+                    "certbot-dns-openstack:dns-openstack",
+                    "--certbot-dns-openstack:dns-openstack-cloud",
+                    self.args.os_cloud,
+                    "-d",
+                    self.domain,
+                ]
+                if self.args.email:
+                    certbot_args.extend(["--email", self.args.email])
+                if self.args.force_renewal:
+                    certbot_args.append("--force-renewal")
+                certbot.main.main(certbot_args)
 
     def get_used_certificates(self):
         conn = self.get_connection()
@@ -337,7 +356,6 @@ DNS for the domain needs to be configured for the domain to use the OpenStack DN
                     )
                     print(f"Falling back to sni listener update")
                     self.args.octavia_sni_listener.append(listener_id)
-                    self.update_octavia_sni_listener(certificate_url)
                     continue
 
             print(f"Updating listener {listener.name} with new certificate")

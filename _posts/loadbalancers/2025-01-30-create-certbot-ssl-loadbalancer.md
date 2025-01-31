@@ -32,24 +32,16 @@ Keymanager to do so. To read more about Keymanaer, refer to the article
 
 For the script to work, we need a couple applications and scripts. 
 
-**Prerequisites**
- - Python 3 is installed together with pip3
-   
- All certificates files are stored on the OpenStack CLI server. We need the following files:
-   - certificate.pem (the certificate file for the load balancer)
-   - private.key (the private key for the load balancer, password protected)
-   - intermediate.pem (intermediate certificates in proper order of your SSL supplier)
- - Passphrase to decrypt the private key
- - openssl tooling installed on the OpenStack CLI server
 
 
 **Step 1**  
-Install tools with linux package manager 
+Install tools with your prefered linux package manager. 
 ```bash
-apt install python3 python3-pip
+sudo apt install python3 python3-pip certbot
+sudo yum install python3 python3-pip certbot
 ```
 **Step 2**  
-Install the python packages with pip 
+Install the python packages with pip. 
 ```bash
 cat > requirements_certbot_dns_openstack.txt << EOF
 openstacksdk
@@ -57,16 +49,58 @@ cryptography
 certbot
 git+https://opendev.org/x/certbot-dns-openstack.git
 EOF
-pip3 install -r requirements_certbot_dns_openstack.txt
+sudo pip3 install -r requirements_certbot_dns_openstack.txt
 rm requirements_certbot_dns_openstack.txt
 ```
 
 **Step 3**  
-Download and evaluate the script from cloudtutorials 
+Download and evaluate the script from cloudtutorials. 
 ```bash
-wget -O ~/renew_certificates.py https://github.com/RobertJansen1/OpenStack-Docs/blob/main/assets/scripts/2025-01-30-create-certbot-ssl-loadbalancer/renew_certificates.py
-less ~/renew_certificates.py
-python3 ~/renew_certificates.py --help
+sudo wget -O /root/renew_certificates.py https://raw.githubusercontent.com/RobertJansen1/OpenStack-Docs/refs/heads/main/assets/scripts/2025-01-30-create-certbot-ssl-loadbalancer/renew_certificates.py
+sudo less /root/renew_certificates.py
+sudo python3 /root/renew_certificates.py --help
 ```
  
-**Step 4**
+**Step 4** 
+Gather the loadbalancer listener id(s) from the OpenStack project to verify which listeners 
+you want to add the certificates to. 
+```bash
+openstack --os-cloud ams2 loadbalancer listener list
+```
+
+### Running the script and schedule it  
+
+**Step 1** 
+Run the script once to evaluate check if everything works
+```bash
+sudo python3 /root/renew_certificates.py --os-cloud <cloud> --domain *.test.example.com --renew \
+ --create-barbican-secret --octavia-listener <UUID>
+```  
+We expect the script to request a certificate through certbot. Certbot on its turn will use a 
+plugin to create a DNS record in OpenStack Designate to validate the domain. 
+The option --create-barbican-secret will gather the certificates from certbot's live directories 
+and upload the certificate to OpenStack Barbican. 
+The option --octavia-listener <UUID> will configure all listeners supplied with the uploaded 
+certificate. 
+
+**Step 2**
+When the script is running succesfully, we can create a cron to schedule the creation. 
+```bash
+sudo cat > /etc/cron.d/renew_certs << EOF
+# /etc/cron.d/renew_certs: crontab entries for the automated OpenStack
+# Certificate renewal
+#
+# Upstream certbot recommends attempting renewal twice a day
+#
+# Eventually, this will be an opportunity to validate certificates
+# haven't been revoked, etc.  Renewal will only occur if expiration
+# is within 30 days.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+0 */12 * * * root test -x /usr/bin/certbot && perl -e 'sleep int(rand(43200))' && python3 /root/renew_certificates.py --os-cloud <cloud> --domain *.test.example.com --renew  --create-barbican-secret --octavia-listener <UUID> >> /var/log/renew_cert.log 2>&1
+
+EOF
+```
+
