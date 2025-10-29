@@ -27,11 +27,11 @@ Below you will find answers to the most frequently asked questions.
   * If you have a floating IP we will migrate it.
   * We have created a new project for you on the new platform.
   * If you use custom images or a snapshot to boot your instance from, we will migrate those glance images as well.
-  * If you have connected your instance to an internal network, we will extend that network into ams2.
+  * If you have connected your instance to an internal network, we will extend that network into the new region.
   * If you have a router for internet access on your network the public IP will change.
   * If you have volumes attached to your instance, we will copy them to the new platform.
   * If you have any snapshots on those volumes, those will be lost.
-  * If you do not disable cloud-init your SSH host key will change when migrating towards ams2.
+  * If you do not disable cloud-init your SSH host key will change when migrating towards the new region.
   * On Windows guests the admin password will be changed if cloudbase-init was not disabled.
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
   * If you have a HA setup, there are some caveats
@@ -52,7 +52,7 @@ There are some impedements we are still resolving before we can migrate all inst
 
 ## Will our SSH keys be migrated?
 
-Yes they will, your SSH keys wil be copied to the ams2 platform.
+Yes they will, your SSH keys wil be copied to the new region.
 
 -----
 
@@ -63,18 +63,18 @@ Note: all changes made on the new instance will not be migrated back and should 
 
 -----
 
-## If I already have instances named equally in the ams2 platform, will they be overwritten?
+## If I already have instances named equally in the new region, will they be overwritten?
 
-No, we will not overwrite anything in ams2.
+No, we will not overwrite anything in the new region.
 
 -----
 
 ## What will be the expected downtime during the migration?
 
   * We've seen instances with downtime of less then a minute, but for safety reasons you should consider up to 15 minutes (The migration depends on the amount of time to boot up the instance and start of all services)
-  * Our tests indicate that downtime could be as less as 40 seconds during minimal load on your instance. A gracefull shutdown will be initiated using the OpenStack API's. A new instance is then spawned and created on ams2, with a copy of the disk. The process will monitor the startup time and if it exceeds 10 minutes, we will automatically initiate a rollback.
-  * If the instance is attached to an internal network it's connection will be lost for 5 minutes. This connection is needed to synchronize the internal network between the legacy platform and ams2.
-  * When the migration is finished and your instance is booted up succesfully within ams2 please include an additional 10 minutes for the internal network to become ready.
+  * Our tests indicate that downtime could be as less as 40 seconds during minimal load on your instance. A gracefull shutdown will be initiated using the OpenStack API's. A new instance is then spawned and created in the new region, with a copy of the disk. The process will monitor the startup time and if it exceeds 10 minutes, we will automatically initiate a rollback.
+  * If the instance is attached to an internal network it's connection will be lost for 5 minutes. This connection is needed to synchronize the internal network between the legacy region and the new region.
+  * When the migration is finished and your instance is booted up succesfully within the new region please include an additional 10 minutes for the internal network to become ready.
   * If the internal network doesnt respond within 20 minutes after the migration has been finished please contact support and initiate a rollback of your instance.
 
 -----
@@ -125,17 +125,17 @@ Your migrated instance can be managed through our Horizon dashboard, accessible 
 
 ## My instance is connected through an internal network to my other instances, does this still work after migration?
 
-Yes, your internal network will be expanded into the ams2 region.
+Yes, your internal network will be expanded into the new region.
 
 -----
 
-## I don’t have any projects in ams2, do I have to create a new one?
+## I don’t have any projects in new region, do I have to create a new one?
 
-No, if you don’t have any projects created in our ams2 region, we have already created a project for your convenience.
+No, if you don’t have any projects created in our new region, we have already created a project for your convenience.
 
 -----
 
-## I have multiple projects in ams2, can you migrate my current resources to my existing project?
+## I have multiple projects in the new region, can you migrate my current resources to my existing project?
 
 Yes, please contact support with the project mapping(s) you'd want us to use, so that we can configure it accordingly.
 
@@ -147,7 +147,7 @@ Those will be lost, as we are unable to duplicate snapshots from the legacy to t
 
 -----
 
-## Are glance images (snapshots/custom images) also imported into ams2?
+## Are glance images (snapshots/custom images) also imported into the new region?
 
 Yes, but only if the image is still available (not deleted).
 
@@ -173,15 +173,15 @@ When the first migration is started we will bill your current resources untill w
 
 ## Will my SSH host key change if cloud-init is enabled?
 
-Yes, the migration from the legacy platform to ams2 will result in a new UUID and name for your instance. Due to the way cloud-init works by default, this will result in cloud-init to re-initialise your system as if it was newly spawned. This will also cause your SSH kost key to be renewed. If you dont want this, please disable cloud-init before the migration to the ams2 region starts.
+Yes, the migration from the legacy platform to the new region will result in a new UUID and name for your instance. Due to the way cloud-init works by default, this will result in cloud-init to re-initialise your system as if it was newly spawned. This will also cause your SSH kost key to be renewed. If you dont want this, please disable cloud-init before the migration to the new region starts.
 
 -----
 
 ## What flavor will my new instance get?
 
-We have carefully selected ams2 flavors that match the specifications and price of your OpenStack Legacy flavor as closely as possible. See the following table how flavors are matched.
+We have carefully selected destination flavors that match the specifications and price of your OpenStack Legacy flavor as closely as possible. See the following table how flavors are matched.
 
-| Openstack Legacy | ams2 |
+| Openstack Legacy | destination |
 | --- | --- |
 | m1.tiny           | Small HD 2GB |
 | m1.small          | Standard 4GB |
