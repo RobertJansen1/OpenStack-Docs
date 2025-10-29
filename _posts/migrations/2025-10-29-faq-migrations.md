@@ -33,15 +33,20 @@ Below you will find answers to the most frequently asked questions.
   * If you do not disable cloud-init your SSH host key will change when migrating towards ams2.
   * On Windows guests the admin password will be changed if cloudbase-init was not disabled.
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
-  * If you have a HA setup, the recommended procedure is to do the primary load balancer first, and the secondary instance last. [Read the section about HA setup for more details](#ha-setup).
+  * If you have a HA setup, there are some caveats
   * Your instance will be changed to a boot-from-volume instance.
 
 -----
 
-## Not all my instances have the *export* button, what’s the reason?
+## Not all my instances have the migration metadata, what’s the reason?
 
-  * If your instance uses volumes larger or equal then 64GByte, this instance needs to be migrated on a thight schedule to minimize the impact of the migration.
-  * If you instance makes use of load balancing , we can’t automatically migrate your instance. Please contact our [Support department](mailto:support@cloudvps.com).
+There are some impedements we are still resolving before we can migrate all instances to our new region
+
+  * If your instance uses volumes larger or equal then 1024GByte, this instance needs to be migrated on a thight schedule to minimize the impact of the migration.
+  * If your instance makes use of load balancing, we currently cannot automatically migrate your instance. 
+  * If your instances are in a large internal network, we will migrate your instances later
+  * HA / vrrp setups are not migrated yet
+  * internal networks with custom routers are not migrated yet
 
 -----
 
@@ -51,9 +56,10 @@ Yes they will, your SSH keys wil be copied to the ams2 platform.
 
 -----
 
-## For how long will I remain able to request a roll-back?
+## My instance is not running as expected after migration, can I perform a roll-back?
 
-We will keep your OpenStack Legacy assets for 30-days after they have been migrated. Automated roll-back is only available within 5 days after the migration.
+Yes, when the migration was a successfull, you can perform a rollback by setting metadata rollback-now on your instance within the legacy Horizon dashboard. Please let us know why you performed a rollback, as we'd like to improve our process to prevent this roll-back in the future.
+Note: all changes made on the new instance will not be migrated back and should be considered lost. Automated roll-back is available in the first 5 days after the migration.
 
 -----
 
@@ -79,7 +85,7 @@ Unless you have created a dependency on that instance, your other instances will
 
 -----
 
-## How can i initiate the migration myself?
+## How can I initiate the migration myself?
 
 When your instance is flagged for migration, additional metadata is added to your instance named migrate-scheduled-YYYY-MM-DDTHH:MM:SS. You can schedule the migration by changing the date / time (times are in UTC!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (mostly within a minute).
 Alternatively you can set metadata migrate-now.
@@ -116,12 +122,6 @@ Your migrated instance can be managed through our Horizon dashboard, accessible 
 
 -----
 
-## If my instance is not running as expected after migration, can I perform a rollback?
-
-Yes, if the procedure was a success, you can perform a rollback by setting metadata rollback-now on your instance within the legacy Horizon dashboard of RegionOne. Please let us know why you perform a rollback, as we'd like to improve our process to prevent this rollback in the future.
-Note: all changes made on the new instance will not be migrated back and should be considered as lost.
-
------
 
 ## My instance is connected through an internal network to my other instances, does this still work after migration?
 
