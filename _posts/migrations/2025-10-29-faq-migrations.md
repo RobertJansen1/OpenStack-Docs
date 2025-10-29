@@ -23,6 +23,7 @@ Below you will find answers to the most frequently asked questions.
 
 ## TL;DR, can you give me a short summary?
 
+  * Your instance will be migrated to a boot-from-volume instance.
   * If you have a floating IP we will migrate it.
   * We have created a new project for you on the new platform.
   * If you use custom images or a snapshot to boot your instance from, we will migrate those glance images as well.
@@ -34,7 +35,6 @@ Below you will find answers to the most frequently asked questions.
   * On Windows guests the admin password will be changed if cloudbase-init was not disabled.
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
   * If you have a HA setup, there are some caveats
-  * Your instance will be changed to a boot-from-volume instance.
 
 -----
 
@@ -59,7 +59,7 @@ Yes they will, your SSH keys wil be copied to the ams2 platform.
 ## My instance is not running as expected after migration, can I perform a roll-back?
 
 Yes, when the migration was a successfull, you can perform a rollback by setting metadata rollback-now on your instance within the legacy Horizon dashboard. Please let us know why you performed a rollback, as we'd like to improve our process to prevent this roll-back in the future.
-Note: all changes made on the new instance will not be migrated back and should be considered lost. Automated roll-back is available in the first 5 days after the migration.
+Note: all changes made on the new instance will not be migrated back and should be considered lost. A roll-back is available in the first 5 days after the migration.
 
 -----
 
@@ -92,7 +92,7 @@ Alternatively you can set metadata migrate-now.
 
 -----
 
-## What will happen if I don’t start or schedule the migration yourself?
+## What will happen when I don’t start or schedule the migration myself?
 
 Your instance will be migrated during office hours (9:00-16:00 CET) on the date we communicated by e-mail, and set in the metadata.
 
@@ -100,7 +100,7 @@ Your instance will be migrated during office hours (9:00-16:00 CET) on the date 
 
 ## Can I migrate outside office hours?
 
-Yes, by scheduling the migration using the provided metadata (see [How can i initiate the migration myself](#How-can-i-initiate-the-migration-myself))
+Yes, by scheduling the migration using the provided metadata (see [How can i initiate the migration myself](#how-can-i-initiate-the-migration-myself))
 
 -----
 
