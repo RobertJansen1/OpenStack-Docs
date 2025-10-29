@@ -34,32 +34,36 @@ Below you will find answers to the most frequently asked questions.
   * If you do not disable cloud-init your SSH host key will change when migrating towards the new region.
   * On Windows guests the admin password will be changed if cloudbase-init was not disabled.
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
+  * We will check commonly used ports (like port 22, 80, 443, etc).
   * If you have a HA setup, there are some caveats
 
 -----
 
 ## Not all my instances have the migration metadata, what’s the reason?
 
-There are some impedements we are still resolving before we can migrate all instances to our new region
+We're finalizing the last steps to enable the migration of all instances to the new region
 
   * If your instance uses volumes larger or equal then 1024GByte, this instance needs to be migrated on a thight schedule to minimize the impact of the migration.
-  * If your instance makes use of load balancing, we currently cannot automatically migrate your instance. 
-  * If your instances are in a large internal network, we will migrate your instances later
-  * HA / vrrp setups are not migrated yet
-  * internal networks with custom routers are not migrated yet
+  * If your instance makes use of load balancing, we will migrate your instance at a later stage.
+  * Instances that are part of a large internal network will be migrated at a later stage.
+  * HA / vrrp setups will be migrated at a later stage.
+  * internal networks with custom routers will be migrated at a later stage.
 
 -----
 
 ## Will our SSH keys be migrated?
 
-Yes they will, your SSH keys wil be copied to the new region.
+Yes they will, your SSH keys wil be copied to the new region but only for the instance (it will not be migrated to your user).
 
 -----
 
 ## My instance is not running as expected after migration, can I perform a roll-back?
 
-Yes, when the migration was a successfull, you can perform a rollback by setting metadata rollback-now on your instance within the legacy Horizon dashboard. Please let us know why you performed a rollback, as we'd like to improve our process to prevent this roll-back in the future.
-Note: all changes made on the new instance will not be migrated back and should be considered lost. A roll-back is available in the first 5 days after the migration.
+Yes, once the migration has been successfully completed, you can perform a rollback by setting the metadata key `rollback-now` on your instance within the legacy Horizon dashboard.
+
+If you do perform a rollback, please let us know the reason. We're keen to understand what went wrong so we can improve the process and avoid similar situations in the future.
+
+> **Note**: Any changes made on the new instance will not be carried back and should be considered lost. A rollback is only available within the first 5 days after the migration.
 
 -----
 
@@ -87,8 +91,8 @@ Unless you have created a dependency on that instance, your other instances will
 
 ## How can I initiate the migration myself?
 
-When your instance is flagged for migration, additional metadata is added to your instance named o2o-scheduled-YYYY-MM-DDTHH:MM:SS. You can schedule the migration by changing the date / time (times are in UTC!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (mostly within a minute).
-Alternatively you can set metadata o2o-migrate-now.
+When your instance is flagged for migration, additional metadata is added to your instance named `o2o-scheduled-YYYY-MM-DDTHH:MM:SS`. You can schedule the migration by changing the date / time (times are in UTC!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (mostly within a minute).
+Alternatively you can set metadata `o2o-migrate-now`.
 
 -----
 
@@ -179,7 +183,7 @@ Yes, the migration from the legacy platform to the new region will result in a n
 
 ## What flavor will my new instance get?
 
-We have carefully selected destination flavors that match the specifications and price of your OpenStack Legacy flavor as closely as possible. See the following table how flavors are matched.
+We have carefully selected destination flavors that match the specifications and price of your OpenStack Legacy flavor as closely as possible. See the following table how flavors are matched. If the flavor is not sufficient, you can resize your instance after migration to another flavor.
 
 | Openstack Legacy | destination |
 | --- | --- |
