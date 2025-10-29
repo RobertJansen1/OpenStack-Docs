@@ -1,7 +1,7 @@
 ---
 layout: page
 tags: [Loadbalancers]
-page_title: Add LetsEncrypt to your SSL loadbalancer
+page_title: Add Let's Encrypt to your SSL loadbalancer
 ---
 
 This tutorial guides you through the process of adding an automated certificate renewal for 
@@ -11,7 +11,7 @@ cron, Barbican and a custom script
 ---
 
 ## Requirements
-Before adding letsencrypt certificates to your load balancer, we first need to create a load 
+Before adding Let's Encrypt certificates to your load balancer, we first need to create a load 
 balancer with HTTPS_OFFLOADING, like described in [Create a ssl loadbalancer]({{ '/articles/create-a-ssl-loadbalancer' | relative_url }}) 
  
 We need a linux machine with the OpenStack command line tools [Using the OpenStack CLI article](
@@ -22,7 +22,7 @@ For this guide we assume you have already created a DNS Zone, if you haven't
 done this yet please read the following article:
 [Create a DNS Zone]({{ '/articles/create-a-dns-zone' | relative_url }})
  
-We will be storing the letsencrypt SSL certificates in OpenStack. We are using 
+We will be storing the Let's Encrypt SSL certificates in OpenStack. We are using 
 Keymanager to do so. To read more about Keymanaer, refer to the article 
 [Introduction to Keymanager]({{ '/articles/introduction-to-keymanager' | relative_url }}).
 
@@ -37,28 +37,22 @@ For the script to work, we need a couple applications and scripts.
 **Step 1**  
 Install tools with your prefered linux package manager. 
 ```bash
+# For Debian-based systems
 sudo apt install python3 python3-pip certbot
+
+# For Redhat-based systems
 sudo yum install python3 python3-pip certbot
 ```
 **Step 2**  
 Install the python packages with pip. 
 ```bash
-cat > requirements_certbot_dns_openstack.txt << EOF
-openstacksdk
-cryptography
-certbot
-git+https://opendev.org/x/certbot-dns-openstack.git
-EOF
-sudo pip3 install -r requirements_certbot_dns_openstack.txt
-rm requirements_certbot_dns_openstack.txt
+sudo pip install openstacksdk cryptography certbot git+https://opendev.org/x/certbot-dns-openstack.git
 ```
 
 **Step 3**  
-Download and evaluate the script from cloudtutorials. 
+Download the script from cloudtutorials. We recommend you reading the script before executing, this is always good practice.
 ```bash
-sudo wget -O /root/renew_certificates.py https://raw.githubusercontent.com/RobertJansen1/OpenStack-Docs/refs/heads/main/assets/scripts/2025-01-30-create-certbot-ssl-loadbalancer/renew_certificates.py
-sudo less /root/renew_certificates.py
-sudo python3 /root/renew_certificates.py --help
+sudo wget -O /root/renew_certificates.py https://raw.githubusercontent.com/CloudTutorials/OpenStack-Docs/refs/heads/main/assets/scripts/2025-01-30-create-certbot-ssl-loadbalancer/renew_certificates.py
 ```
  
 **Step 4** 

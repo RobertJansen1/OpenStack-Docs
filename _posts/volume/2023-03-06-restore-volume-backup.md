@@ -30,11 +30,21 @@ Click on `RESTORE BACKUP` next to the backup you want to restore.
 
 **Step 4a (Restoring to an new volume)**  
 If you want to restore the backup to a new volume then select the
-`CREATE A NEW VOLUME` option and click on `Restore Backup`.
+`CREATE A NEW VOLUME` option and click on `Restore Backup`. This options will
+use the default volume type SSD. should you want to use a different volume type
+you will have to proceed to step 4b and skip this step (step 4a).
+
+> Note: If you are trying to restore an encrypted backup we recommend first
+> creating a new volume with the `encrypted` volume type and then restoring
+> the backup to the new volume. (See step 4b)
 
 **Step 4b (Restoring to an existing volume)**  
 Select the volume you want to restore the backup to and click on `Restore
 Backup`.
+
+> Note: If you are trying to restore an encrypted backup make sure to use the
+> same volume type as the original volume when restoring the backup. This is
+> to make sure the data can be read from the volume after restoring the backup.
 
 ---
 
@@ -83,6 +93,10 @@ openstack volume create --os-volume-api-version 3.47 --size 10 --backup <backup_
 
 A new volume will now be created with the data from the backup.
 
+> Note: If you are restoring an backup of an encrypted volume make sure
+> to use the same encrypted volume type like `<type>-encrypted` when restoring
+> the backup. You can do this by adding the  `--type <volume-type>` argument.
+
 > Note: In older versions of the OpenStack the `--os-volume-api-version 3.47`
 option might not work, in this case you need to create a new volume and then
 restore the backup to the new volume using the instructions in the
@@ -123,9 +137,17 @@ openstack volume backup list
 Now that we have the ID of the backup and the volume where we want to restore
 the backup to we can execute the following command to restore the backup.
 ```bash
-openstack volume backup restore <backup_id> <volume_id>
+openstack volume backup restore <backup_id> <volume_id> --force
 ```
 
+> Warning: The `--force` option will overwrite the data on the volume with the
+> data from the backup. Make sure you have a backup of the data on the volume
+> before restoring the backup incase you made a mistake and overwrite
+> something important.
+
+> Note: If you are trying to restore an encrypted backup make sure to use the
+> same volume type as the original volume when restoring the backup. This is
+> to make sure the data can be read from the volume after restoring the backup.
 ---
 
 You have now restored your backup! We hope this article was helpful and that
