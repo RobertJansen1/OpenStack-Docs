@@ -1,6 +1,9 @@
-<div id="sidebar" class="flex-shrink-0 p-3 bg-dark" style="width: 280px;">
-    <a href="{{ '/' | relative_url }}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-        <p class="fs-5 fw-semibold text-light">{{ site.title | escape }}</p>
+<div id="sidebar" class="flex-shrink-0 p-3 bg-dark sidebar-modern" style="width: 280px;">
+    <a href="{{ '/' | relative_url }}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom-modern">
+        <svg class="cloud-icon me-2" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.5 19H7C4.23858 19 2 16.7614 2 14C2 11.3995 3.99715 9.25634 6.53629 9.02985C7.20845 6.63335 9.40567 5 12 5C15.0376 5 17.5 7.46243 17.5 10.5C17.5 10.6712 17.4932 10.8409 17.48 11.0086C19.4776 11.1947 21 12.8491 21 14.8889C21 17.0539 19.2757 19 17.1111 19H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="fs-5 fw-semibold text-light mb-0 site-title">{{ site.title | escape }}</p>
     </a>
     <ul class="list-unstyled ps-0">
         {% for tag in site.tags %}
