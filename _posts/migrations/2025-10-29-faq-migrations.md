@@ -87,8 +87,8 @@ Unless you have created a dependency on that instance, your other instances will
 
 ## How can I initiate the migration myself?
 
-When your instance is flagged for migration, additional metadata is added to your instance named migrate-scheduled-YYYY-MM-DDTHH:MM:SS. You can schedule the migration by changing the date / time (times are in UTC!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (mostly within a minute).
-Alternatively you can set metadata migrate-now.
+When your instance is flagged for migration, additional metadata is added to your instance named o2o-scheduled-YYYY-MM-DDTHH:MM:SS. You can schedule the migration by changing the date / time (times are in UTC!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (mostly within a minute).
+Alternatively you can set metadata o2o-migrate-now.
 
 -----
 
