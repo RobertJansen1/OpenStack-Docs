@@ -6,26 +6,54 @@
         <p class="fs-5 fw-semibold text-light mb-0 site-title">{{ site.title | escape }}</p>
     </a>
     <ul class="list-unstyled ps-0">
-        {% for tag in site.tags %}
-        {% assign post_active = false %}
-        {% for post in tag[1] %}
-            {% if page.url == post.url %}
-                {% assign post_active = true %}
-            {% endif %}
-        {% endfor %}
-        <li class="mb-1">
-            <button class="btn btn-toggle text-light align-items-center rounded {% if post_active %}btn-active{% else %}collapsed{% endif %}" data-bs-toggle="collapse"
-                data-bs-target="#{{ tag[0] }}-collapse" aria-expanded="{% if post_active %}true{% else %}false{% endif %}">
-                {{ tag[0] | split: '-' | join: ' ' }}
-            </button>
-            <div class="collapse {% if post_active %}show{% endif %}" id="{{ tag[0] }}-collapse">
-                <ul class="btn-toggle-nav active list-unstyled fw-normal pb-1 small">
+        {% assign tag_order = "Getting-Started,Compute,Image,Network,Volume,Loadbalancers,DNS,Keymanager,BOSS-Backup" | split: "," %}
+        {% for tag_name in tag_order %}
+            {% for tag in site.tags %}
+                {% if tag[0] == tag_name %}
+                    {% assign post_active = false %}
                     {% for post in tag[1] %}
-                    <li><a href="{{ post.url | relative_url }}" class="link-light rounded {% if page.url == post.url %}btn-active{% endif %}">{{ post.page_title | default: post.title }}</a></li>
+                        {% if page.url == post.url %}
+                            {% assign post_active = true %}
+                        {% endif %}
                     {% endfor %}
-                </ul>
-            </div>
-        </li>
-    {% endfor %}
+                    <li class="mb-1">
+                        <button class="btn btn-toggle text-light align-items-center rounded {% if post_active %}btn-active{% else %}collapsed{% endif %}" data-bs-toggle="collapse"
+                            data-bs-target="#{{ tag[0] }}-collapse" aria-expanded="{% if post_active %}true{% else %}false{% endif %}">
+                            {{ tag[0] | split: '-' | join: ' ' }}
+                        </button>
+                        <div class="collapse {% if post_active %}show{% endif %}" id="{{ tag[0] }}-collapse">
+                            <ul class="btn-toggle-nav active list-unstyled fw-normal pb-1 small">
+                                {% for post in tag[1] %}
+                                <li><a href="{{ post.url | relative_url }}" class="link-light rounded {% if page.url == post.url %}btn-active{% endif %}">{{ post.page_title | default: post.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        {% for tag in site.tags %}
+            {% unless tag_order contains tag[0] %}
+                {% assign post_active = false %}
+                {% for post in tag[1] %}
+                    {% if page.url == post.url %}
+                        {% assign post_active = true %}
+                    {% endif %}
+                {% endfor %}
+                <li class="mb-1">
+                    <button class="btn btn-toggle text-light align-items-center rounded {% if post_active %}btn-active{% else %}collapsed{% endif %}" data-bs-toggle="collapse"
+                        data-bs-target="#{{ tag[0] }}-collapse" aria-expanded="{% if post_active %}true{% else %}false{% endif %}">
+                        {{ tag[0] | split: '-' | join: ' ' }}
+                    </button>
+                    <div class="collapse {% if post_active %}show{% endif %}" id="{{ tag[0] }}-collapse">
+                        <ul class="btn-toggle-nav active list-unstyled fw-normal pb-1 small">
+                            {% for post in tag[1] %}
+                            <li><a href="{{ post.url | relative_url }}" class="link-light rounded {% if page.url == post.url %}btn-active{% endif %}">{{ post.page_title | default: post.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            {% endunless %}
+        {% endfor %}
     </ul>
 </div>
