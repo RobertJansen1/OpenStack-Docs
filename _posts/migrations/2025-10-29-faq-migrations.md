@@ -155,7 +155,7 @@ Yes, but only if the image is still available (not deleted).
 
 ## Do I keep my current IP addresses?
 
-Yes, all of your public and internal IP addresses will be migrated. IP numbers ending with 1 or 2 can’t be used cause the IP numbers are reserved for internal use. If your instance uses one of those ip addresses, they will be changed during the move. The mac address will remain the same, so please configure network device to use DHCP.
+Yes, all of your public (floating) and internal IP addresses will be migrated.
 
 -----
 
