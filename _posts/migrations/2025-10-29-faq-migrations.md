@@ -27,54 +27,58 @@ Below you will find answers to the most frequently asked questions.
   * If you have a floating IP we will migrate it.
   * We have created a new project for you on the new platform.
   * If you use custom images or a snapshot to boot your instance from, we will migrate those glance images as well.
-  * If you have connected your instance to an internal network, we will extend that network into ams2.
+  * If you have connected your instance to an internal network, we will extend that network into the new region.
   * If you have a router for internet access on your network the public IP will change.
   * If you have volumes attached to your instance, we will copy them to the new platform.
   * If you have any snapshots on those volumes, those will be lost.
-  * If you do not disable cloud-init your SSH host key will change when migrating towards ams2.
+  * If you do not disable cloud-init your SSH host key will change when migrating towards the new region.
   * On Windows guests the admin password will be changed if cloudbase-init was not disabled.
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
+  * We will check commonly used ports (like port 22, 80, 443, etc).
   * If you have a HA setup, there are some caveats
 
 -----
 
 ## Not all my instances have the migration metadata, what’s the reason?
 
-There are some impedements we are still resolving before we can migrate all instances to our new region
+We're finalizing the last steps to enable the migration of all instances to the new region
 
   * If your instance uses volumes larger or equal then 1024GByte, this instance needs to be migrated on a thight schedule to minimize the impact of the migration.
-  * If your instance makes use of load balancing, we currently cannot automatically migrate your instance. 
-  * If your instances are in a large internal network, we will migrate your instances later
-  * HA / vrrp setups are not migrated yet
-  * internal networks with custom routers are not migrated yet
+  * If your instance makes use of load balancing, we will migrate your instance at a later stage.
+  * Instances that are part of a large internal network will be migrated at a later stage.
+  * HA / vrrp setups will be migrated at a later stage.
+  * internal networks with custom routers will be migrated at a later stage.
 
 -----
 
 ## Will our SSH keys be migrated?
 
-Yes they will, your SSH keys wil be copied to the ams2 platform.
+Yes they will, your SSH keys wil be copied to the new region but only for the instance (it will not be migrated to your user).
 
 -----
 
 ## My instance is not running as expected after migration, can I perform a roll-back?
 
-Yes, when the migration was a successfull, you can perform a rollback by setting metadata rollback-now on your instance within the legacy Horizon dashboard. Please let us know why you performed a rollback, as we'd like to improve our process to prevent this roll-back in the future.
-Note: all changes made on the new instance will not be migrated back and should be considered lost. A roll-back is available in the first 5 days after the migration.
+Yes, once the migration has been successfully completed, you can perform a rollback by setting the metadata key `rollback-now` on your instance within the legacy Horizon dashboard.
+
+If you do perform a rollback, please let us know the reason. We're keen to understand what went wrong so we can improve the process and avoid similar situations in the future.
+
+> **Note**: Any changes made on the new instance will not be carried back and should be considered lost. A rollback is only available within the first 5 days after the migration.
 
 -----
 
-## If I already have instances named equally in the ams2 platform, will they be overwritten?
+## If I already have instances named equally in the new region, will they be overwritten?
 
-No, we will not overwrite anything in ams2.
+No, we will not overwrite anything in the new region.
 
 -----
 
 ## What will be the expected downtime during the migration?
 
   * We've seen instances with downtime of less then a minute, but for safety reasons you should consider up to 15 minutes (The migration depends on the amount of time to boot up the instance and start of all services)
-  * Our tests indicate that downtime could be as less as 40 seconds during minimal load on your instance. A gracefull shutdown will be initiated using the OpenStack API's. A new instance is then spawned and created on ams2, with a copy of the disk. The process will monitor the startup time and if it exceeds 10 minutes, we will automatically initiate a rollback.
-  * If the instance is attached to an internal network it's connection will be lost for 5 minutes. This connection is needed to synchronize the internal network between the legacy platform and ams2.
-  * When the migration is finished and your instance is booted up succesfully within ams2 please include an additional 10 minutes for the internal network to become ready.
+  * Our tests indicate that downtime could be as less as 40 seconds during minimal load on your instance. A gracefull shutdown will be initiated using the OpenStack API's. A new instance is then spawned and created in the new region, with a copy of the disk. The process will monitor the startup time and if it exceeds 10 minutes, we will automatically initiate a rollback.
+  * If the instance is attached to an internal network it's connection will be lost for 5 minutes. This connection is needed to synchronize the internal network between the legacy region and the new region.
+  * When the migration is finished and your instance is booted up succesfully within the new region please include an additional 10 minutes for the internal network to become ready.
   * If the internal network doesnt respond within 20 minutes after the migration has been finished please contact support and initiate a rollback of your instance.
 
 -----
@@ -87,8 +91,8 @@ Unless you have created a dependency on that instance, your other instances will
 
 ## How can I initiate the migration myself?
 
-When your instance is flagged for migration, additional metadata is added to your instance named migrate-scheduled-YYYY-MM-DDTHH:MM:SS. You can schedule the migration by changing the date / time (times are in UTC!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (mostly within a minute).
-Alternatively you can set metadata migrate-now.
+When your instance is flagged for migration, additional metadata is added to your instance named `o2o-scheduled-YYYY-MM-DDTHH:MM:SS`. You can schedule the migration by changing the date / time (times are in UTC!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (mostly within a minute).
+Alternatively you can set metadata `o2o-migrate-now`.
 
 -----
 
@@ -125,17 +129,17 @@ Your migrated instance can be managed through our Horizon dashboard, accessible 
 
 ## My instance is connected through an internal network to my other instances, does this still work after migration?
 
-Yes, your internal network will be expanded into the ams2 region.
+Yes, your internal network will be expanded into the new region.
 
 -----
 
-## I don’t have any projects in ams2, do I have to create a new one?
+## I don’t have any projects in new region, do I have to create a new one?
 
-No, if you don’t have any projects created in our ams2 region, we have already created a project for your convenience.
+No, if you don’t have any projects created in our new region, we have already created a project for your convenience.
 
 -----
 
-## I have multiple projects in ams2, can you migrate my current resources to my existing project?
+## I have multiple projects in the new region, can you migrate my current resources to my existing project?
 
 Yes, please contact support with the project mapping(s) you'd want us to use, so that we can configure it accordingly.
 
@@ -147,7 +151,7 @@ Those will be lost, as we are unable to duplicate snapshots from the legacy to t
 
 -----
 
-## Are glance images (snapshots/custom images) also imported into ams2?
+## Are glance images (snapshots/custom images) also imported into the new region?
 
 Yes, but only if the image is still available (not deleted).
 
@@ -155,7 +159,7 @@ Yes, but only if the image is still available (not deleted).
 
 ## Do I keep my current IP addresses?
 
-Yes, all of your public and internal IP addresses will be migrated. IP numbers ending with 1 or 2 can’t be used cause the IP numbers are reserved for internal use. If your instance uses one of those ip addresses, they will be changed during the move. The mac address will remain the same, so please configure network device to use DHCP.
+Yes, all of your public (floating) and internal IP addresses will be migrated.
 
 -----
 
@@ -173,15 +177,15 @@ When the first migration is started we will bill your current resources untill w
 
 ## Will my SSH host key change if cloud-init is enabled?
 
-Yes, the migration from the legacy platform to ams2 will result in a new UUID and name for your instance. Due to the way cloud-init works by default, this will result in cloud-init to re-initialise your system as if it was newly spawned. This will also cause your SSH kost key to be renewed. If you dont want this, please disable cloud-init before the migration to the ams2 region starts.
+Yes, the migration from the legacy platform to the new region will result in a new UUID and name for your instance. Due to the way cloud-init works by default, this will result in cloud-init to re-initialise your system as if it was newly spawned. This will also cause your SSH kost key to be renewed. If you dont want this, please disable cloud-init before the migration to the new region starts.
 
 -----
 
 ## What flavor will my new instance get?
 
-We have carefully selected ams2 flavors that match the specifications and price of your OpenStack Legacy flavor as closely as possible. See the following table how flavors are matched.
+We have carefully selected destination flavors that match the specifications and price of your OpenStack Legacy flavor as closely as possible. See the following table how flavors are matched. If the flavor is not sufficient, you can resize your instance after migration to another flavor.
 
-| Openstack Legacy | ams2 |
+| Openstack Legacy | destination |
 | --- | --- |
 | m1.tiny           | Small HD 2GB |
 | m1.small          | Standard 4GB |
