@@ -77,7 +77,7 @@ No, we will not overwrite anything in the new region.
 
   * We've seen instances with downtime of less then a minute, but for safety reasons you should consider up to 15 minutes (The migration depends on the amount of time to boot up the instance and start of all services)
   * Our tests indicate that downtime could be as less as 40 seconds during minimal load on your instance. A gracefull shutdown will be initiated using the OpenStack API's. A new instance is then spawned and created in the new region, with a copy of the disk. The process will monitor the startup time and if it exceeds 10 minutes, we will automatically initiate a rollback.
-  * If the instance is attached to an internal network it's connection will be lost for 5 minutes. This connection is needed to synchronize the internal network between the legacy region and the new region.
+  * If the instance is attached to an internal network it's connection will be lost for up to 10 minutes. This connection is needed to synchronize the internal network between the legacy region and the new region.
   * When the migration is finished and your instance is booted up succesfully within the new region please include an additional 10 minutes for the internal network to become ready.
   * If the internal network doesnt respond within 20 minutes after the migration has been finished please contact support and initiate a rollback of your instance.
 
@@ -92,7 +92,7 @@ Unless you have created a dependency on that instance, your other instances will
 ## How can I initiate the migration myself?
 
 When your instance is flagged for migration, additional metadata is added to your instance named `o2o-scheduled-YYYY-MM-DDTHH:MM:SS`. You can schedule the migration by changing the date / time (times are in UTC!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (mostly within a minute).
-Alternatively you can set metadata `o2o-migrate-now`.
+Alternatively you can set metadata `o2o-migrate-now` on the metadata key `migrate_flag`.
 
 -----
 
@@ -116,13 +116,13 @@ If the migration fails, your instance will be started again on the current OpenS
 
 ## How can i see if the migration was successful?
 
-If the migration was successful, the instance will reach a 'MIGRATED' state. This can be verified via either the OpenStack Legacy API or in the Horizon dashboard.
+If the migration was successful, the instance will reach a 'SHUTOFF' state. This can be verified via either the OpenStack Legacy API or in the Horizon dashboard, The instance will be locked. The progress of the migration can be monitored through metadata key `_export_progress`
 
 -----
 
 ## Where can i manage my migrated instance?
 
-Your migrated instance can be managed through our Horizon dashboard, accessible through the Control Panel.
+Your migrated instance can be managed through the new Horizon dashboard, accessible through the Control Panel.
 
 -----
 
