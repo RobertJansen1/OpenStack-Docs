@@ -98,8 +98,10 @@ To set or change the metadata of your instance, go to the Horizon interface Proj
 
 <img class="rounded border border-dark" src="{{ '/assets/images/2025-10-29-faq-migrations/instance_update_metadata.png' | relative_url }}" width="auto" height="600" />
 
-Open `Provider platform options` > `Migration` and Click `+` on `Scheduling options`. Update the date/timestamp to your liking and click `Save`
+Open `Provider platform options` > `Migration` and Click `+` on `Scheduling options`. Update the date/timestamp to your liking and click `Save`  
+
 <img class="rounded border border-dark" src="{{ '/assets/images/2025-10-29-faq-migrations/add_metadata.png' | relative_url }}" width="auto" height="400" />
+
 -----
 
 ## What will happen when I don’t start or schedule the migration myself?
