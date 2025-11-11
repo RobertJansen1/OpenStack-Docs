@@ -91,7 +91,7 @@ Unless you have created a dependency on that instance, your other instances will
 
 ## How can I initiate the migration myself?
 
-When your instance is flagged for migration, additional metadata is added to your instance named `o2o-scheduled-YYYY-MM-DDTHH:MM:SS`. You can schedule the migration by changing the date / time (times are in the europe/amsterdam timezone!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (mostly within a minute).
+When your instance is flagged for migration, additional metadata is added to your instance named `o2o-scheduled-YYYY-MM-DDTHH:MM:SS`. You can schedule the migration by changing the date / time (times are in the europe/amsterdam timezone!) to your preference. A date / time in the past will start a migration as soon as a migration slot is available (normally within a minute).
 Alternatively you can set metadata `o2o-migrate-now` on the metadata key `migrate_flag`.  
 
 To set or change the metadata of your instance, go to the Horizon interface Project > Compute > Instances. Click the more options triangle next to the instance and choose `Update Metadata`. 
