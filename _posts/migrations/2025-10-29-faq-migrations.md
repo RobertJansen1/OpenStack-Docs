@@ -43,7 +43,7 @@ Below you will find answers to the most frequently asked questions.
 
 We're finalizing the last steps to enable the migration of all instances to the new region
 
-  * If your instance uses volumes larger or equal then 1024GByte, this instance needs to be migrated on a thight schedule to minimize the impact of the migration.
+  * If your instance uses volumes larger or equal then 1024GByte, this instance needs to be migrated on a tight schedule to minimize the impact of the migration.
   * If your instance makes use of load balancing, we will migrate your instance at a later stage.
   * Instances that are part of a large internal network will be migrated at a later stage.
   * HA / vrrp setups will be migrated at a later stage.
@@ -53,7 +53,7 @@ We're finalizing the last steps to enable the migration of all instances to the 
 
 ## Will our SSH keys be migrated?
 
-Yes they will, your SSH keys wil be copied to the new region but only for the instance (it will not be migrated to your user).
+Yes they will, your SSH keys will be copied to the new region but only for the instance (it will not be migrated to your user).
 
 -----
 
@@ -79,7 +79,7 @@ No, we will not overwrite anything in the new region.
   * Our tests indicate that downtime could be as less as 40 seconds during minimal load on your instance. A gracefull shutdown will be initiated using the OpenStack API's. A new instance is then spawned and created in the new region, with a copy of the disk. The process will monitor the startup time and if it exceeds 10 minutes, we will automatically initiate a rollback.
   * If the instance is attached to an internal network it's connection will be lost for up to 10 minutes. This connection is needed to synchronize the internal network between the legacy region and the new region.
   * When the migration is finished and your instance is booted up succesfully within the new region please include an additional 10 minutes for the internal network to become ready.
-  * If the internal network doesnt respond within 20 minutes after the migration has been finished please contact support and initiate a rollback of your instance.
+  * If the internal network doesn't respond within 20 minutes after the migration has been finished please contact support and initiate a rollback of your instance.
 
 -----
 
@@ -118,7 +118,7 @@ Yes, by scheduling the migration using the provided metadata (see [How can i ini
 
 ## What will happen if the migration fails?
 
-If the migration fails, your instance will be started again on the current OpenStack platform. We will investigate the cause of the failure and get in contact to schedule a retry.
+If the migration fails, your instance will be started again on the current OpenStack platform. We will investigate the cause of the failure and inform you about a new migration date.
 
 -----
 
@@ -179,13 +179,13 @@ We are continously working on resolving impedements that might block some migrat
 
 ## Will i still be billed for my migrated resources in the old platform?
 
-When the first migration is started we will bill your current resources untill we migrated all of your project's resources. When all resources in your project are migrated, we will start billing your resources from ams2 and stop billing from the legacy platform.
+When the first migration is started we will bill your current resources until we migrated all of your project's resources. When all resources in your project are migrated, we will start billing your resources from ams2 and stop billing from the legacy platform.
 
 -----
 
 ## Will my SSH host key change if cloud-init is enabled?
 
-Yes, the migration from the legacy platform to the new region will result in a new UUID and name for your instance. Due to the way cloud-init works by default, this will result in cloud-init to re-initialise your system as if it was newly spawned. This will also cause your SSH kost key to be renewed. If you dont want this, please disable cloud-init before the migration to the new region starts.
+Yes, the migration from the legacy platform to the new region will result in a new UUID and name for your instance. Due to the way cloud-init works by default, this will result in cloud-init to re-initialise your system as if it was newly spawned. This will also cause your SSH host key to be renewed. If you don't want this, please disable cloud-init before the migration to the new region starts.
 
 -----
 
