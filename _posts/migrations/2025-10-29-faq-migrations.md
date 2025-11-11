@@ -192,6 +192,7 @@ Yes, the migration from the legacy platform to the new region will result in a n
 
 We have carefully selected destination flavors that match the specifications and price of your OpenStack Legacy flavor as closely as possible. See the following table how flavors are matched. If the flavor is not sufficient, you can resize your instance after migration to another flavor.
 
+{: style="width: 400px;"}
 | Openstack Legacy | destination |
 | --- | --- |
 | m1.tiny           | Small HD 2GB |
