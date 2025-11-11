@@ -106,7 +106,7 @@ Open `Provider platform options` > `Migration` and Click `+` on `Scheduling opti
 
 ## What will happen when I don’t start or schedule the migration myself?
 
-Your instance will be migrated during office hours (9:00-16:00 CET) on the date we communicated by e-mail, and set in the metadata.
+Your instance will be migrated during office hours (9:00-17:00 Europe/Amsterdam timezone) on the date we communicated by e-mail, and set in the metadata.
 
 -----
 
