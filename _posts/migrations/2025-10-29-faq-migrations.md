@@ -73,6 +73,7 @@ No, we will not overwrite anything in the new region.
   * If the instance is attached to an internal network it's connection will be lost for up to 10 minutes. This connection is needed to synchronize the internal network between the legacy region and the new region.
   * When the migration is finished and your instance is booted up succesfully within the new region please include an additional 10 minutes for the internal network to become ready.
   * If the internal network doesn't respond within 20 minutes after the migration has been finished please contact support and initiate a rollback of your instance.
+  * Load balancers will have up to 5 minutes of downtime, as the load balancer needs to be recreated in the new region.
 
 
 ## Will migration of an instance affect my other operational instances?
@@ -80,7 +81,7 @@ No, we will not overwrite anything in the new region.
 Unless you have created a dependency on that instance, your other instances will not be affected.
 
 ## What will happen with Load Balancers during migration?
-All load balancers will be migrated once all instances have been migrated. During the migration of the load balancer there will be some minutes of downtime, as the load balancer needs to be recreated in the new region. The migration of the load balancer will start automatically once all instances have been migrated and will be on the same day as the last instance migration of your project. Load balancers will be converted to Octava load balancers during migration and will have the flavor 'Small' assigned. We expect the performance to be similar to or better than the current load balancer performance. After migration you can resize your load balancer to a different flavor if needed.
+All load balancers will be migrated once all instances have been migrated. During the migration of the load balancer there will be some minutes of downtime, as the load balancer needs to be recreated in the new region. The migration of the load balancer will start automatically once all instances have been migrated and will be on the same day as the last instance migration of your project. Load balancers will be converted to Octava load balancers during migration and will have the flavor 'Small' assigned. We expect the performance to be similar to or better than the current load balancer performance.
 
 ## How can I initiate the migration myself?
 
