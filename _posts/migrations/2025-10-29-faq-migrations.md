@@ -73,6 +73,7 @@ No, we will not overwrite anything in the new region.
   * If the instance is attached to an internal network it's connection will be lost for up to 10 minutes. This connection is needed to synchronize the internal network between the legacy region and the new region.
   * When the migration is finished and your instance is booted up succesfully within the new region please include an additional 10 minutes for the internal network to become ready.
   * If the internal network doesn't respond within 20 minutes after the migration has been finished please contact support and initiate a rollback of your instance.
+  * Load balancers will have up to 5 minutes of downtime, as the load balancer needs to be recreated in the new region.
 
 
 ## Will migration of an instance affect my other operational instances?
