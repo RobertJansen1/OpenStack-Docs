@@ -30,19 +30,17 @@ Below you will find answers to the most frequently asked questions.
   * If you have any snapshots on those volumes, those will be lost.
   * If you do not disable cloud-init your SSH host key will change when migrating towards the new region.
   * On Windows guests the admin password will be changed if cloudbase-init was not disabled.
+  * Windows instances might require reactivation of the license as the hardware of the VM is replaced
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
   * We will check commonly used ports (like port 22, 80, 443, etc).
   * If you have a HA setup, there are some caveats
-  * Load balancers will be migrated once all instances have been migrated and will have some minutes of donwtime.
+  * Load balancers will be migrated once all instances have been migrated and will have some minutes of downtime.
 
 
 ## Not all my instances have the migration metadata, what’s the reason?
 
 We're finalizing the last steps to enable the migration of all instances to the new region
 
-  * If your instance uses volumes larger or equal then 1024GByte, this instance needs to be migrated on a tight schedule to minimize the impact of the migration.
-  * If your instance makes use of load balancing, we will migrate your instance at a later stage.
-  * Instances that are part of a large internal network will be migrated at a later stage.
   * HA / vrrp setups will be migrated at a later stage.
   * internal networks with custom routers will be migrated at a later stage.
 
@@ -68,10 +66,10 @@ No, we will not overwrite anything in the new region.
 
 ## What will be the expected downtime during the migration?
 
-  * We've seen instances with downtime of less then a minute, but for safety reasons you should consider up to 15 minutes (The migration depends on the amount of time to boot up the instance and start of all services)
-  * Our tests indicate that downtime could be as less as 40 seconds during minimal load on your instance. A gracefull shutdown will be initiated using the OpenStack API's. A new instance is then spawned and created in the new region, with a copy of the disk. The process will monitor the startup time and if it exceeds 10 minutes, we will automatically initiate a rollback.
-  * If the instance is attached to an internal network it's connection will be lost for up to 10 minutes. This connection is needed to synchronize the internal network between the legacy region and the new region.
-  * When the migration is finished and your instance is booted up succesfully within the new region please include an additional 10 minutes for the internal network to become ready.
+  * We've seen instances with downtime of less than a minute, but for safety reasons you should consider up to 15 minutes (The migration depends on the amount of time to boot up the instance and start all services)
+  * Our tests indicate that downtime could be as little as 40 seconds during minimal load on your instance. A graceful shutdown will be initiated using the OpenStack APIs. A new instance is then spawned and created in the new region, with a copy of the disk. The process will monitor the startup time and if it exceeds 10 minutes, we will automatically initiate a rollback.
+  * If the instance is attached to an internal network its connection will be lost for up to 10 minutes. This connection is needed to synchronize the internal network between the legacy region and the new region.
+  * When the migration is finished and your instance is booted up successfully within the new region please include an additional 10 minutes for the internal network to become ready.
   * If the internal network doesn't respond within 20 minutes after the migration has been finished please contact support and initiate a rollback of your instance.
   * Load balancers will have up to 5 minutes of downtime, as the load balancer needs to be recreated in the new region.
 
@@ -104,7 +102,7 @@ Your instance will be migrated during office hours (9:00-17:00 Europe/Amsterdam 
 
 ## Can I migrate outside office hours?
 
-Yes, by scheduling the migration using the provided metadata (see [How can i initiate the migration myself](#how-can-i-initiate-the-migration-myself))
+Yes, by scheduling the migration using the provided metadata (see [How can I initiate the migration myself](#how-can-i-initiate-the-migration-myself))
 
 
 ## What will happen if the migration fails?
@@ -112,12 +110,12 @@ Yes, by scheduling the migration using the provided metadata (see [How can i ini
 If the migration fails, your instance will be started again on the current OpenStack platform. We will investigate the cause of the failure and inform you about a new migration date.
 
 
-## How can i see if the migration was successful?
+## How can I see if the migration was successful?
 
-If the migration was successful, the instance will reach a 'SHUTOFF' state. This can be verified via either the OpenStack Legacy API or in the Horizon dashboard, The instance will be locked. The progress of the migration can be monitored through metadata key `_export_progress`
+If the migration was successful, the instance will reach a 'SHUTOFF' state. This can be verified via either the OpenStack Legacy API or in the Horizon dashboard. The instance will be locked. The progress of the migration can be monitored through metadata key `_export_progress`
 
 
-## Where can i manage my migrated instance?
+## Where can I manage my migrated instance?
 
 Your migrated instance can be managed through the new Horizon dashboard, accessible through the Control Panel.
 
@@ -136,7 +134,7 @@ Yes, please contact support with the project mapping(s) you'd want us to use
 
 ## What happens with snapshots attached to my volumes?
 
-Those will be lost, as we are unable to duplicate snapshots from the legacy to the new platform. When you want to save a snapshot of your volume, create a new volume with the snapshot as source. This can be done in Horizon: Volumes \> New Volume \> Clone an exisiting volume, here you select the volume where you want to clone the snapshot from and you can select the snapshot itself.
+Those will be lost, as we are unable to duplicate snapshots from the legacy to the new platform. When you want to save a snapshot of your volume, create a new volume with the snapshot as source. This can be done in Horizon: Volumes \> New Volume \> Clone an existing volume, here you select the volume where you want to clone the snapshot from and you can select the snapshot itself.
 
 ## Are glance images (snapshots/custom images) also imported into the new region?
 
@@ -148,11 +146,16 @@ Yes, all of your public (floating) and internal IP addresses will be migrated.
 
 ## I would like to migrate all my resources ASAP, is that possible?
 
-We are continously working on resolving impedements that might block some migrations, you can contact support to validate if your instances can already be migrated.
+We are continuously working on resolving impediments that might block some migrations. You can contact support to validate if your instances can already be migrated.
 
-## Will i still be billed for my migrated resources in the old platform?
+## Will I still be billed for my migrated resources in the old platform?
 
 When the first migration is started we will bill your current resources until we migrated all of your project's resources. When all resources in your project are migrated, we will start billing your resources from ams2 and stop billing from the legacy platform.
+
+
+## What will happen with my Windows license?
+
+When your virtual machine is migrated, a new virtual machine is created on our destination platform. Windows will detect this new hardware automatically and configure the operating system appropriately. After the migration, it is possible your virtual machine needs to re-activate its license. To verify if your license is properly activated, please go to Windows System settings -> Activation -> Troubleshoot or Activate to verify activation or re-activate your license.
 
 ## Will my SSH host key change if cloud-init is enabled?
 
