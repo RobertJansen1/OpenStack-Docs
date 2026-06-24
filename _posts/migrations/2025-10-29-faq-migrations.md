@@ -33,8 +33,10 @@ Below you will find answers to the most frequently asked questions.
   * Windows instances might require reactivation of the license as the hardware of the VM is replaced
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
   * We will check commonly used ports (like port 22, 80, 443, etc).
-  * If you have a HA setup, there are some caveats
+  * If you have a HA setup, there are some caveats.
   * Load balancers will be migrated once all instances have been migrated and will have some minutes of downtime.
+  * For HEAT stacks, we will only migrate resources, not the stacks. 
+  
 
 
 ## Not all my instances have the migration metadata, what’s the reason?
@@ -43,6 +45,7 @@ We're finalizing the last steps to enable the migration of all instances to the 
 
   * HA / vrrp setups will be migrated at a later stage.
   * internal networks with custom routers will be migrated at a later stage.
+  * Other configurations of your instance or the platform can limit the migration. those limitations will be resolved at a later phase.
 
 
 ## Will our SSH keys be migrated?
@@ -80,6 +83,10 @@ Unless you have created a dependency on that instance, your other instances will
 
 ## What will happen with Load Balancers during migration?
 All load balancers will be migrated once all instances have been migrated. During the migration of the load balancer there will be some minutes of downtime, as the load balancer needs to be recreated in the new region. The migration of the load balancer will start automatically once all instances have been migrated and will be on the same day as the last instance migration of your project. Load balancers will be converted to Octava load balancers during migration and will have the flavor 'Small' assigned. We expect the performance to be similar to or better than the current load balancer performance.
+
+## What will happen with HEAT stacks during migration?
+To prevent errors and unexpected behaviour, all instances in a HEAT stack will be migrated to the new platform as seperate resources. HEAT configurations will be removed from the old platform after the migration is finished. If you want to keep using HEAT on the destination region, we ask you to create a new heat stack with instances and migrate your data and configurations yourself.
+
 
 ## How can I initiate the migration myself?
 
@@ -150,8 +157,7 @@ We are continuously working on resolving impediments that might block some migra
 
 ## Will I still be billed for my migrated resources in the old platform?
 
-When the first migration is started we will bill your current resources until we migrated all of your project's resources. When all resources in your project are migrated, we will start billing your resources from ams2 and stop billing from the legacy platform.
-
+We will stop billing for migrated resources as soon as the instance is shut down on the old platform. Instances on the new platform will be billed as soon as they are created. 
 
 ## What will happen with my Windows license?
 
@@ -163,24 +169,7 @@ Yes, the migration from the legacy platform to the new region will result in a n
 
 ## What flavor will my new instance get?
 
-We have carefully selected destination flavors that match the specifications and price of your OpenStack Legacy flavor as closely as possible. See the following table how flavors are matched. If the flavor is not sufficient, you can resize your instance after migration to another flavor.
-
-{: style="width: 400px;"}
-| Openstack Legacy | destination |
-| --- | --- |
-| m1.tiny           | Small HD 2GB |
-| m1.small          | Standard 4GB |
-| m1.medium         | Small HD 8GB |
-| m1.xlarge         | Small HD 32GB |
-| m1.large          | Small HD 16GB |
-| m1.tiny.windows   | Standard 1GB |
-| m1.small.windows  | Standard 4GB |
-| m1.medium.windows | Small HD 8GB |
-| m1.large.windows  | Small HD 16GB |
-| m1.xlarge.windows | Small HD 32GB |
-| vps.1             | Standard 1GB |
-| vps.2             | Standard 4GB |
-| vps.3             | Medium HD 8GB |
+The flavors between the old region and the new one are the same.
 
 -----
 
