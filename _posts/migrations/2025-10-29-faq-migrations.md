@@ -79,7 +79,7 @@ No, we will not overwrite anything in the new region.
 Unless you have created a dependency on that instance, your other instances will not be affected.
 
 ## What will happen with Load Balancers during migration?
-All load balancers will be migrated once all instances have been migrated. During the migration of the load balancer there will be some minutes of downtime, as the load balancer needs to be recreated in the new region. The migration of the load balancer will start automatically once all instances have been migrated and will be on the same day as the last instance migration of your project. Load balancers will be converted to Octava load balancers during migration and will have the flavor 'Small' assigned. We expect the performance to be similar to or better than the current load balancer performance. After migration you can resize your load balancer to a different flavor if needed.
+All load balancers will be migrated once all instances have been migrated. During the migration of the load balancer there will be some minutes of downtime, as the load balancer needs to be recreated in the new region. The migration of the load balancer will start automatically once all instances have been migrated and will be on the same day as the last instance migration of your project. Load balancers will be converted to Octava load balancers during migration and will have the flavor 'Small' assigned. We expect the performance to be similar to or better than the current load balancer performance.
 
 ## How can I initiate the migration myself?
 
