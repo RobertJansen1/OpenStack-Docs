@@ -36,8 +36,8 @@ Below you will find answers to the most frequently asked questions.
   * If you have a HA setup, there are some caveats.
   * Load balancers will be migrated once all instances have been migrated and will have some minutes of downtime.
   * For HEAT stacks, we will only migrate resources, not the stacks. 
+  * The region and availability zones will change name, updates to configuration files is needed.
   
-
 
 ## Not all my instances have the migration metadata, what’s the reason?
 
@@ -150,6 +150,15 @@ Yes, but only if the image is still available (not deleted).
 ## Do I keep my current IP addresses?
 
 Yes, all of your public (floating) and internal IP addresses will be migrated.
+
+## What will happen when I have a floating IP address without a router?
+
+Unfortunattely, the AMS region no longer supports the creation of a floating IP without a router. We will create a router for every network where floating IPs are created without a router, and connect it to the floating network. An additional Public IPv4 address will be added to your new bill.
+
+## I have OpenStack cmd tools / terraform / other tools configured, what do i need to do?
+When using API tools, you need to add or change the region to your configuration files. You can find a manual on ho wto configure CLI tools at: [Using the OpenStack CLI article](
+    {{ '/articles/using-the-cli-linux' | relative_url }}
+).
 
 ## I would like to migrate all my resources ASAP, is that possible?
 
