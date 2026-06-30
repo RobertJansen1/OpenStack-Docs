@@ -20,9 +20,9 @@ Below you will find answers to the most frequently asked questions.
 
 ## TL;DR, can you give me a short summary?
 
-  * Your instance will be migrated to a boot-from-volume instance.
+  * Your instance will be migrated to a new region.
   * If you have a floating IP we will migrate it.
-  * We have created a new project for you on the new platform.
+  * We will enable your project on the new platform.
   * If you use custom images or a snapshot to boot your instance from, we will migrate those glance images as well.
   * If you have connected your instance to an internal network, we will extend that network into the new region.
   * If you have a router for internet access on your network the public IP will change.
@@ -133,7 +133,7 @@ Yes, your internal network will be expanded into the new region.
 
 ## I don’t have any projects in new region, do I have to create a new one?
 
-No, if you don’t have any projects created in our new region, we have already created a project for your convenience.
+No, if you don’t have any projects created in our new region, we will enable your project in the new region.
 
 ## I have multiple projects in the new region, can you migrate my current resources to my existing project?
 
