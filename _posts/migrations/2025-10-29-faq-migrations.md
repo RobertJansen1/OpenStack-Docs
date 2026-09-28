@@ -31,7 +31,8 @@ Below you will find answers to the most frequently asked questions.
   * If you do not disable cloud-init your SSH host key will change when migrating towards the new region.
   * Shelved, stopped, paused and suspended instances will be started or resumed during the migration.
   * On Windows guests the admin password will be changed if cloudbase-init was not disabled.
-  * Windows instances might require reactivation of the license as the hardware of the VM is replaced
+  * Windows instances might require reactivation of the license as the hardware of the VM is replaced.
+  * Windows driveletters of additional volumes might shift after migration
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
   * We will check commonly used ports (like port 22, 80, 443, etc).
   * If you have a HA setup, there are some caveats.
@@ -181,6 +182,10 @@ We will stop billing for migrated resources as soon as the instance is shut down
 ## What will happen with my Windows license?
 
 When your virtual machine is migrated, a new virtual machine is created on our destination platform. Windows will detect this new hardware automatically and configure the operating system appropriately. After the migration, it is possible your virtual machine needs to re-activate its license. To verify if your license is properly activated, please go to Windows System settings -> Activation -> Troubleshoot or Activate to verify activation or re-activate your license.
+
+## What happened to my Windows drive letter assignment?
+
+When we migrate your instance to the new platform, Windows will see some new hardware. All hard drives are in the same order as they were before the migrations, but sometimes Windows does not allocate the drive letters as they were before. To reconfigure the drive letters, please go into the Server Management and re-allocate the proper drive letters manually. This only needs to happen once, and the new instance will remember it for future reboots.
 
 ## Will my SSH host key change if cloud-init is enabled?
 
