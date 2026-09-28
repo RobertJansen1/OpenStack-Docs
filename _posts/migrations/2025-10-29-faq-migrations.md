@@ -29,6 +29,7 @@ Below you will find answers to the most frequently asked questions.
   * If you have volumes attached to your instance, we will copy them to the new platform.
   * If you have any snapshots on those volumes, those will be lost.
   * If you do not disable cloud-init your SSH host key will change when migrating towards the new region.
+  * Shelved, stopped, paused and suspended instances will be started or resumed during the migration.
   * On Windows guests the admin password will be changed if cloudbase-init was not disabled.
   * Windows instances might require reactivation of the license as the hardware of the VM is replaced
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
@@ -154,6 +155,15 @@ Yes, all of your public (floating) and internal IP addresses will be migrated.
 ## What will happen when I have a floating IP address without a router?
 
 Unfortunattely, the AMS region no longer supports the creation of a floating IP without a router. We will create a router for every network where floating IPs are created without a router, and connect it to the floating network. An additional Public IPv4 address will be added to your new bill.
+
+## How do you handle Stopped and Shelved instances?
+
+Stopped, shelved and shelved_offloaded instances will be started on the source platform before the migration starts. We do this so we can validate the status of the current machine, and validate the migration afterwards. After a succesfull migration, the instance will be stopped on the destination platform. 
+
+## How do you handle Suspended and Paused instances?
+
+Suspended and Paused instances will be resumed on the source platform before the migration starts. After a succesfull migration, the instance will be suspended or paused on the destination platform. 
+
 
 ## I have OpenStack cmd tools / terraform / other tools configured, what do i need to do?
 When using API tools, you need to add or change the region to your configuration files. You can find a manual on ho wto configure CLI tools at: [Using the OpenStack CLI article](
