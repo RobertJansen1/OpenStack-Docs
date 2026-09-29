@@ -32,7 +32,7 @@ Below you will find answers to the most frequently asked questions.
   * Shelved, stopped, paused and suspended instances will be started or resumed during the migration.
   * On Windows guests the admin password will be changed if cloudbase-init was not disabled.
   * Windows instances might require reactivation of the license as the hardware of the VM is replaced.
-  * Windows driveletters of additional volumes might shift after migration
+  * Windows driveletters of additional volumes might shift after migration.
   * We will use ICMP ping to determine if your instance is up and running, please prepare your instance accordingly.
   * We will check commonly used ports (like port 22, 80, 443, etc).
   * If you have a HA setup, there are some caveats.
@@ -159,11 +159,11 @@ Unfortunattely, the AMS region no longer supports the creation of a floating IP 
 
 ## How do you handle Stopped and Shelved instances?
 
-Stopped, shelved and shelved_offloaded instances will be started on the source platform before the migration starts. We do this so we can validate the status of the current machine, and validate the migration afterwards. After a succesfull migration, the instance will be stopped on the destination platform. 
+Stopped, shelved and shelved_offloaded instances will be started on the source platform before the migration starts. We do this so we can validate the status of the current machine, and validate the migration afterwards. After a succesful migration, the instance will be stopped on the destination platform. 
 
 ## How do you handle Suspended and Paused instances?
 
-Suspended and Paused instances will be resumed on the source platform before the migration starts. After a succesfull migration, the instance will be suspended or paused on the destination platform. 
+Suspended and Paused instances will be resumed on the source platform before the migration starts. After a succesful migration, the instance will be suspended or paused on the destination platform. 
 
 
 ## I have OpenStack cmd tools / terraform / other tools configured, what do i need to do?
