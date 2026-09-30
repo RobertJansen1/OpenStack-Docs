@@ -193,7 +193,16 @@ Yes, the migration from the legacy platform to the new region will result in a n
 
 ## What flavor will my new instance get?
 
-The flavors between the old region and the new one are the same.
+The flavors between the old region and the new one are the same with exception of the following flavors:
+
+| Source   |      Destination      |
+|----------|-------------:|
+| High Memory 16GB |  Medium HD 16GB |
+| High Memory 24GB |  Medium HD 24GB |
+| High Memory 32GB |  Medium HD 32GB |
+| High Memory 48GB |  Medium HD 48GB |
+| High Memory 64GB |  Medium HD 64GB |
+| High Memory 96GB |  Medium HD 96GB |
 
 -----
 
